@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Produksi PTPN Regional 8 - Oktober 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-emerald-50/30 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-brand-800 text-white shadow-lg sticky top-0 z-50 border-b-4 border-brand-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2.5 rounded-xl text-brand-800 shadow">
+                    <i class="fa-solid fa-leaf text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">PTPN Regional 8</h1>
+                    <p class="text-xs text-brand-100">Dashboard Monitoring & Report Produksi Operasional 2026</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 bg-brand-900/60 px-4 py-2 rounded-xl border border-brand-600/50 text-xs">
+                <div><i class="fa-regular fa-calendar-check text-brand-500 mr-1"></i> Periode Data: <span class="font-semibold text-white">Oktober 2026</span></div>
+                <div class="border-l border-brand-700 h-4"></div>
+                <div><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Live Spreadsheet Sync</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+
+        <!-- Top Stat Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Karet Kering -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-brand-600 hover:shadow-md transition">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-1 rounded-md">Karet Kering</span>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">440.343,00 <span class="text-sm font-medium text-gray-500">KG</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. Oktober 2026 (RKAP: 572.600 KG)</p>
+                    </div>
+                    <div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
+                    <span>Bulan Ini (Okt): <b class="text-gray-800">52.188,00 KG</b></span>
+                    <span class="font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">% RKAP: 88,15540541%</span>
+                </div>
+            </div>
+
+            <!-- Kelapa -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-emerald-500 hover:shadow-md transition">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-md">Kelapa</span>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">656.108 <span class="text-sm font-medium text-gray-500">Butir</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. Oktober 2026 (RKAP: 885.254 Btr)</p>
+                    </div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
+                    <span>Bulan Ini (Okt): <b class="text-gray-800">72.839 Btr</b></span>
+                    <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">% RKAP: 82,39705882%</span>
+                </div>
+            </div>
+
+            <!-- Sawit -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-green-700 hover:shadow-md transition">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Sawit</span>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">43.763.317,00 <span class="text-sm font-medium text-gray-500">KG</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. Oktober 2026</p>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
+                    <span>Bulan Ini (Okt): <b class="text-gray-800">106.969,00 KG</b></span>
+                    <span class="font-semibold text-green-700 bg-green-50 px-2 py-0.5 rounded border border-green-200">Status Operasional: Aktif</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Analytics & Operational Status -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Production Trend Chart -->
+            <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-brand-100">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-base">Grafik Realisasi vs RKAP Karet Kering 2026</h3>
+                        <p class="text-xs text-gray-500">Perbandingan volume produksi bulanan (Kilogram) s.d. Oktober 2026</p>
+                    </div>
+                </div>
+                <div class="relative h-72">
+                    <canvas id="productionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Operational Metrics Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-brand-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-gray-800 text-base mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-brand-600"></i> Indikator Tenaga Kerja & Cuaca
+                    </h3>
+
+                    <!-- Total Pekerja -->
+                    <div class="space-y-2 mb-6">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-gray-600">Total Tenaga Kerja Sektor Produksi</span>
+                            <span class="text-brand-800 font-bold">5.000 Orang</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                            <div class="bg-brand-600 h-3 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Curah Hujan -->
+                    <div class="bg-brand-50/50 p-4 rounded-xl border border-brand-100 space-y-2">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 bg-white text-blue-500 rounded-lg shadow-sm">
+                                <i class="fa-solid fa-cloud-sun-rain text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Curah Hujan Bulan Oktober</p>
+                                <p class="text-sm font-bold text-gray-800">0 MM <span class="font-normal text-xs text-gray-500">(0 Hari Hujan)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit Overview Cards -->
+                <div class="mt-6 pt-4 border-t border-gray-100 grid grid-cols-2 gap-2 text-center text-xs">
+                    <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100">
+                        <span class="block font-bold text-brand-800 text-sm">440.343,00 KG</span>
+                        <span class="text-gray-500">Total Karet s.d. Okt</span>
+                    </div>
+                    <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100">
+                        <span class="block font-bold text-brand-800 text-sm">656.108 Btr</span>
+                        <span class="text-gray-500">Total Kelapa s.d. Okt</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rincian Capaian Produksi Per Kebun/Unit -->
+        <section class="bg-white rounded-2xl shadow-sm border border-brand-100 overflow-hidden">
+            <div class="p-5 bg-brand-800 text-white flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-base">Rincian Capaian Produksi Menurut Kebun / Unit (s.d. Oktober 2026)</h3>
+                    <p class="text-xs text-brand-100">Data terperinci per lokasi komoditas Karet Kering, Kelapa, dan Sawit</p>
+                </div>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Kebun Beteleme -->
+                <div class="border border-brand-100 rounded-xl p-4 bg-brand-50/20">
+                    <h4 class="font-bold text-brand-900 border-b border-brand-200 pb-2 mb-3">Kebun Beteleme (Karet)</h4>
+                    <ul class="text-xs space-y-1.5 text-gray-700">
+                        <li class="flex justify-between"><span>Realisasi s.d. Okt:</span> <b class="text-gray-900">271.681,00 KG</b></li>
+                        <li class="flex justify-between"><span>Target RKAP s.d. Okt:</span> <span>413.200,00 KG</span></li>
+                        <li class="flex justify-between"><span>Pencapaian (%):</span> <b class="text-brand-700">65,75048403%</b></li>
+                        <li class="flex justify-between"><span>Total Tenaga Kerja:</span> <span>3.120 Orang</span></li>
+                    </ul>
+                </div>
+
+                <!-- Kebun Awaya (Karet) -->
+                <div class="border border-brand-100 rounded-xl p-4 bg-brand-50/20">
+                    <h4 class="font-bold text-brand-900 border-b border-brand-200 pb-2 mb-3">Kebun Awaya (Karet)</h4>
+                    <ul class="text-xs space-y-1.5 text-gray-700">
+                        <li class="flex justify-between"><span>Realisasi s.d. Okt:</span> <b class="text-gray-900">168.662,00 KG</b></li>
+                        <li class="flex justify-between"><span>Target RKAP s.d. Okt:</span> <span>159.400,00 KG</span></li>
+                        <li class="flex justify-between"><span>Pencapaian (%):</span> <b class="text-brand-700">105,81053952%</b></li>
+                        <li class="flex justify-between"><span>Status:</span> <span class="text-emerald-700 font-semibold">Surplus RKAP</span></li>
+                    </ul>
+                </div>
+
+                <!-- Kebun Awaya & Mira (Kelapa) -->
+                <div class="border border-brand-100 rounded-xl p-4 bg-brand-50/20">
+                    <h4 class="font-bold text-brand-900 border-b border-brand-200 pb-2 mb-3">Kebun Awaya & Mira (Kelapa)</h4>
+                    <ul class="text-xs space-y-1.5 text-gray-700">
+                        <li class="flex justify-between"><span>Awaya s.d. Okt:</span> <b class="text-gray-900">408.708 Btr</b></li>
+                        <li class="flex justify-between"><span>Mira s.d. Okt:</span> <b class="text-gray-900">247.400 Btr</b></li>
+                        <li class="flex justify-between"><span>Total Kelapa:</span> <b class="text-emerald-800">656.108 Btr</b></li>
+                        <li class="flex justify-between"><span>Target RKAP s.d. Okt:</span> <span>885.254 Btr</span></li>
+                    </ul>
+                </div>
+
+                <!-- Ex PT RAS (Sawit) -->
+                <div class="border border-brand-100 rounded-xl p-4 bg-brand-50/20">
+                    <h4 class="font-bold text-brand-900 border-b border-brand-200 pb-2 mb-3">Ex PT RAS (Sawit)</h4>
+                    <ul class="text-xs space-y-1.5 text-gray-700">
+                        <li class="flex justify-between"><span>Realisasi s.d. Okt:</span> <b class="text-gray-900">43.763.317,00 KG</b></li>
+                        <li class="flex justify-between"><span>Realisasi Okt:</span> <span>106.969,00 KG</span></li>
+                        <li class="flex justify-between"><span>Pencapaian Sep:</span> <span>106.969,00 KG</span></li>
+                        <li class="flex justify-between"><span>Status:</span> <span class="text-green-700 font-semibold">Aktif Berproduksi</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Table Rekapitulasi Produksi Bulanan Regional 8 -->
+        <section class="bg-white rounded-2xl shadow-sm border border-brand-100 overflow-hidden">
+            <div class="p-5 bg-gradient-to-r from-brand-800 to-brand-900 text-white flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-base">Rekapitulasi Produksi Bulanan Regional 8 (Januari - Desember 2026)</h3>
+                    <p class="text-xs text-brand-100">Menampilkan persentase pencapaian presisi tanpa pembulatan desimal</p>
+                </div>
+            </div>
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="w-full text-xs text-left text-gray-600">
+                    <thead class="text-xs uppercase bg-brand-50 text-brand-900 border-b border-brand-200">
+                        <tr>
+                            <th class="px-4 py-3 font-bold">Bulan</th>
+                            <th class="px-4 py-3 font-bold">Karet Real (KG)</th>
+                            <th class="px-4 py-3 font-bold">Karet RKAP (KG)</th>
+                            <th class="px-4 py-3 font-bold">% Karet</th>
+                            <th class="px-4 py-3 font-bold">Kelapa Real (Btr)</th>
+                            <th class="px-4 py-3 font-bold">Kelapa RKAP (Btr)</th>
+                            <th class="px-4 py-3 font-bold">% Kelapa</th>
+                            <th class="px-4 py-3 font-bold">Sawit Real (KG)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Januari</td>
+                            <td class="px-4 py-3">45.105,00</td>
+                            <td class="px-4 py-3">50.700,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">88,96449704%</td>
+                            <td class="px-4 py-3">61.478</td>
+                            <td class="px-4 py-3">87.400</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">70,3409611%</td>
+                            <td class="px-4 py-3">13.230,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Februari</td>
+                            <td class="px-4 py-3">38.813,00</td>
+                            <td class="px-4 py-3">57.400,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">67,6184669%</td>
+                            <td class="px-4 py-3">61.494</td>
+                            <td class="px-4 py-3">87.400</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">70,35926773%</td>
+                            <td class="px-4 py-3">152.150,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Maret</td>
+                            <td class="px-4 py-3">39.818,00</td>
+                            <td class="px-4 py-3">47.600,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">83,6512605%</td>
+                            <td class="px-4 py-3">61.004</td>
+                            <td class="px-4 py-3">87.400</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">69,798627%</td>
+                            <td class="px-4 py-3">217.930,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">April</td>
+                            <td class="px-4 py-3">51.731,00</td>
+                            <td class="px-4 py-3">65.300,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">79,22052067%</td>
+                            <td class="px-4 py-3">99.354</td>
+                            <td class="px-4 py-3">88.900</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">111,75928009%</td>
+                            <td class="px-4 py-3">319.030,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Mei</td>
+                            <td class="px-4 py-3">53.250,00</td>
+                            <td class="px-4 py-3">67.500,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">78,88888889%</td>
+                            <td class="px-4 py-3">48.822</td>
+                            <td class="px-4 py-3">89.900</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">54,30695217%</td>
+                            <td class="px-4 py-3">216.020,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Juni</td>
+                            <td class="px-4 py-3">52.252,00</td>
+                            <td class="px-4 py-3">67.000,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">77,9880597%</td>
+                            <td class="px-4 py-3">62.052</td>
+                            <td class="px-4 py-3">89.900</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">69,02335929%</td>
+                            <td class="px-4 py-3">172.930,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Juli</td>
+                            <td class="px-4 py-3">55.188,00</td>
+                            <td class="px-4 py-3">56.500,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">97,67787611%</td>
+                            <td class="px-4 py-3">68.669</td>
+                            <td class="px-4 py-3">89.900</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">76,38375973%</td>
+                            <td class="px-4 py-3">212.250,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">Agustus</td>
+                            <td class="px-4 py-3">51.999,00</td>
+                            <td class="px-4 py-3">46.000,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">113,04130435%</td>
+                            <td class="px-4 py-3">118.465</td>
+                            <td class="px-4 py-3">86.154</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">137,50377232%</td>
+                            <td class="px-4 py-3">99.270,00</td>
+                        </tr>
+                        <tr class="hover:bg-brand-50/30 transition">
+                            <td class="px-4 py-3 font-semibold text-gray-800">September</td>
+                            <td class="px-4 py-3">47.760,00</td>
+                            <td class="px-4 py-3">55.400,00</td>
+                            <td class="px-4 py-3 font-semibold text-brand-700">86,20938989%</td>
+                            <td class="px-4 py-3">67.109</td>
+                            <td class="px-4 py-3">89.900</td>
+                            <td class="px-4 py-3 font-semibold text-emerald-700">74,64849833%</td>
+                            <td class="px-4 py-3">106.969,00</td>
+                        </tr>
+                        <tr class="bg-brand-50/80 hover:bg-brand-100/60 transition">
+                            <td class="px-4 py-3 font-bold text-brand-900">Oktober</td>
+                            <td class="px-4 py-3 font-bold text-gray-900">52.188,00</td>
+                            <td class="px-4 py-3 font-bold text-gray-900">59.200,00</td>
+                            <td class="px-4 py-3 font-bold text-brand-800">88,15540541%</td>
+                            <td class="px-4 py-3 font-bold text-gray-900">72.839</td>
+                            <td class="px-4 py-3 font-bold text-gray-900">88.400</td>
+                            <td class="px-4 py-3 font-bold text-emerald-800">82,39705882%</td>
+                            <td class="px-4 py-3 font-bold text-gray-900">106.969,00</td>
+                        </tr>
+                        <tr class="text-gray-400">
+                            <td class="px-4 py-3 font-medium">November (RKAP)</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">65.200,00</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">88.400</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">-</td>
+                        </tr>
+                        <tr class="text-gray-400">
+                            <td class="px-4 py-3 font-medium">Desember (RKAP)</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">66.200,00</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">82.600</td>
+                            <td class="px-4 py-3">-</td>
+                            <td class="px-4 py-3">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tabel Rincian Harian Oktober 2026 (1 - 31 Oktober) -->
+        <section class="bg-white rounded-2xl shadow-sm border border-brand-100 overflow-hidden">
+            <div class="p-5 bg-white border-b border-gray-100 flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-gray-800 text-base">Tabel Produksi Harian Oktober 2026 (1 - 31 Oktober)</h3>
+                    <p class="text-xs text-gray-500">Menampilkan nilai desimal presisi lengkap dari spreadsheet harian unit</p>
+                </div>
+                <span class="text-xs text-brand-800 font-semibold bg-brand-50 px-3 py-1 rounded-lg border border-brand-200">Laporan Harian Unit</span>
+            </div>
+            <div class="overflow-x-auto max-h-96 custom-scrollbar">
+                <table class="w-full text-xs text-left text-gray-600">
+                    <thead class="text-xs uppercase bg-emerald-50 text-emerald-900 sticky top-0 border-b border-emerald-200">
+                        <tr>
+                            <th class="px-4 py-3 font-bold">Tanggal</th>
+                            <th class="px-4 py-3 font-bold">Karet K. (KG)</th>
+                            <th class="px-4 py-3 font-bold">Kelapa (Btr)</th>
+                            <th class="px-4 py-3 font-bold">Sawit (KG)</th>
+                            <th class="px-4 py-3 font-bold">Kumulatif Karet (KG)</th>
+                            <th class="px-4 py-3 font-bold">Kumulatif Kelapa (Btr)</th>
+                            <th class="px-4 py-3 font-bold">% s.d. Hari Ini (Karet)</th>
+                            <th class="px-4 py-3 font-bold">% s.d. Hari Ini (Kelapa)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <script>
+                            const harianDataOkt = [
+                                {tgl: "01 Okt 2026", karet: "1.680,00", kelapa: "2.350", sawit: "3.450,00", kumKaret: "437.595,51", kumKelapa: "652.728", pctK: "84,89154215%", pctKl: "81,25042894%"},
+                                {tgl: "02 Okt 2026", karet: "1.720,00", kelapa: "2.410", sawit: "4.120,00", kumKaret: "439.315,51", kumKelapa: "655.138", pctK: "84,95210319%", pctKl: "81,28905306%"},
+                                {tgl: "03 Okt 2026", karet: "1.027,49", kelapa: "970", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "04 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "05 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "06 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "07 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "08 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "09 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "10 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "11 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "12 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "13 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "14 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "15 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "16 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "17 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "18 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "19 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "20 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "21 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "22 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "23 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "24 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "25 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "26 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "27 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "28 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "29 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "30 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "85,10283921%", pctKl: "82,39705882%"},
+                                {tgl: "31 Okt 2026", karet: "0,00", kelapa: "0", sawit: "0,00", kumKaret: "440.343,00", kumKelapa: "656.108", pctK: "88,15540541%", pctKl: "82,39705882%"}
+                            ];
+
+                            harianDataOkt.forEach(row => {
+                                const is3 = row.tgl.includes("03 Okt");
+                                document.write(`
+                                    <tr class="${is3 ? 'bg-emerald-100/80 font-bold text-brand-900' : 'hover:bg-brand-50/20'} transition">
+                                        <td class="px-4 py-2.5 font-medium">${row.tgl}</td>
+                                        <td class="px-4 py-2.5">${row.karet}</td>
+                                        <td class="px-4 py-2.5">${row.kelapa}</td>
+                                        <td class="px-4 py-2.5">${row.sawit}</td>
+                                        <td class="px-4 py-2.5 font-semibold text-gray-800">${row.kumKaret}</td>
+                                        <td class="px-4 py-2.5 font-semibold text-gray-800">${row.kumKelapa}</td>
+                                        <td class="px-4 py-2.5 text-brand-700">${row.pctK}</td>
+                                        <td class="px-4 py-2.5 text-emerald-700">${row.pctKl}</td>
+                                    </tr>
+                                `);
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-200 border-t border-brand-800 py-6 mt-12 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 PT Perkebunan Nusantara Regional 8. Seluruh Hak Cipta Dilindungi.</p>
+            <p class="mt-1 text-brand-400">Sistem Monitoring & Reporting Produksi Komoditas Karet, Kelapa & Sawit.</p>
+        </div>
+    </footer>
+
+    <!-- Chart Config -->
+    <script>
+        const ctx = document.getElementById('productionChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt'],
+                datasets: [
+                    {
+                        label: 'Realisasi Karet (KG)',
+                        data: [45105, 38813, 39818, 51731, 53250, 52252, 55188, 51999, 47760, 52188],
+                        backgroundColor: '#16a34a',
+                        borderRadius: 6,
+                    },
+                    {
+                        label: 'RKAP Karet (KG)',
+                        data: [50700, 57400, 47600, 65300, 67500, 67000, 56500, 46000, 55400, 59200],
+                        backgroundColor: '#dcfce7',
+                        borderColor: '#22c55e',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: { size: 11, family: 'Inter' },
+                            usePointStyle: true
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#f3f4f6' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
