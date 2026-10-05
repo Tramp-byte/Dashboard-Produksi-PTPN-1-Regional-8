@@ -3,201 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Produksi PTPN Regional 8 - 2 Oktober 2026</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Dashboard Produksi & SDM PTPN I Regional 8 - 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            200: '#bbf7d0',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
-                        }
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { brand: {
+            50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' } } } } }
     </script>
     <style>
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        body { font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif; }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        main section > div { min-width: 0; }
+        canvas { max-width: 100%; }
+        @keyframes up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        @keyframes pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+        .panel > * { animation: up .6s ease both; }
+        .panel > *:nth-child(2) { animation-delay: .08s; } .panel > *:nth-child(3) { animation-delay: .16s; } .panel > *:nth-child(4) { animation-delay: .24s; }
+        .pop { display: inline-flex; animation: pop .35s ease both; }
         .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 4px; }
+    @keyframes shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        @keyframes floaty { 0%,100% { transform: translateY(0) rotate(var(--r,0deg)); } 50% { transform: translateY(-14px) rotate(calc(var(--r,0deg) + 6deg)); } }
+        @keyframes marq { to { transform: translateX(-50%); } }
+        .hero-bg { background-size: 220% 220%; animation: shift 14s ease infinite; }
+        .leaf { animation: floaty 7s ease-in-out infinite; }
+        .ring { transition: stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1); }
+        .marq { display: flex; width: max-content; animation: marq 38s linear infinite; }
+        .marq:hover { animation-play-state: paused; }
+        .panel section > div.rounded-3xl { transition: transform .3s, box-shadow .3s; }
+        .panel section > div.rounded-3xl:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -12px rgba(22,101,52,.28); }
+        tbody tr:nth-child(even) { background-color: rgba(240,253,244,.7); }
+        tbody tr:hover { background-color: rgba(187,247,208,.45) !important; }
+        .glow { box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+        .tabbtn { transition: all .25s; }
+        .tabbtn.on { background: #fff; color: #166534; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
     </style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-emerald-50/30 text-gray-800 min-h-screen flex flex-col">
-
-    <!-- Header Navigation -->
-    <header class="bg-brand-800 text-white shadow-lg sticky top-0 z-50 border-b-4 border-brand-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="bg-white p-2.5 rounded-xl text-brand-800 shadow">
-                    <i class="fa-solid fa-leaf text-2xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold tracking-wide">PTPN 1 Regional 8</h1>
-                    <p class="text-xs text-brand-100">Dashboard Monitoring & Report Produksi Operasional 2026</p>
-                </div>
+<body class="bg-gradient-to-br from-white via-emerald-50/60 to-white text-gray-800 min-h-screen flex flex-col">
+    <header class="relative overflow-hidden bg-gradient-to-r from-brand-800 via-emerald-700 to-emerald-500 text-white shadow-lg sticky top-0 z-50 border-b-4 border-brand-500">
+        <div class="absolute -right-10 -top-16 w-56 h-56 rounded-full bg-white/10 blur-2xl"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-white text-brand-700 flex items-center justify-center shadow-lg"><svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg></div>
+                <div><h1 class="text-lg font-extrabold tracking-wide">PTPN I Regional 8</h1><p class="text-[11px] text-emerald-100">Dashboard Produksi & Sumber Daya Manusia 2026</p></div>
             </div>
-            <div class="flex items-center space-x-4 bg-brand-900/60 px-4 py-2 rounded-xl border border-brand-600/50 text-xs">
-                <div><i class="fa-regular fa-calendar-check text-brand-500 mr-1"></i> Periode Data: <span class="font-semibold text-white">2 Oktober 2026</span></div>
-                <div class="border-l border-brand-700 h-4"></div>
-                <div><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse mr-1"></span> Live Spreadsheet Sync</div>
-            </div>
+            <nav class="flex bg-white/15 backdrop-blur p-1 rounded-2xl border border-white/20 text-sm font-semibold">
+                <button id="b-produksi" class="tabbtn on px-5 py-2 rounded-xl" onclick="showTab('produksi')">Produksi</button>
+                <button id="b-sdm" class="tabbtn px-5 py-2 rounded-xl text-white" onclick="showTab('sdm')">Sumber Daya Manusia</button>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8">
+        <section class="hero-bg relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-700 to-emerald-400 text-white p-8 md:p-10 shadow-2xl">
+            <svg class="leaf absolute -right-6 -bottom-12 w-72 h-72 text-white/10" style="--r:12deg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>
+            <svg class="leaf absolute right-56 -top-10 w-40 h-40 text-white/10" style="--r:-45deg;animation-delay:-3s" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>
+            <svg class="leaf absolute left-1/3 bottom-2 w-20 h-20 text-white/10" style="--r:30deg;animation-delay:-5s" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>
+            <div class="relative grid md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3">
+                    <p class="text-xs tracking-[.3em] uppercase text-emerald-100">Laporan Terpadu 2026</p>
+                    <h2 class="text-4xl md:text-6xl font-extrabold mt-2 leading-tight">PTPN I <span class="text-emerald-200">Regional 8</span></h2>
+                    <p class="text-emerald-50 mt-3 max-w-xl text-sm">Produksi karet, kelapa, dan sawit bersama mutasi dan komposisi karyawan di Kantor Regional 8, Awaya, Beteleme, Mira, dan Ternak Kabaru.</p>
+                    <div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Karet Kering</p><p class="text-xl font-extrabold">443.056 <span class="text-xs font-medium text-emerald-100">KG</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Kelapa</p><p class="text-xl font-extrabold">662.004 <span class="text-xs font-medium text-emerald-100">Butir</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Sawit</p><p class="text-xl font-extrabold">1.524.103 <span class="text-xs font-medium text-emerald-100">KG</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Total Karyawan</p><p class="text-xl font-extrabold">548 <span class="text-xs font-medium text-emerald-100">Orang</span></p></div></div>
+                </div>
+                <div class="md:col-span-2 bg-white/10 backdrop-blur rounded-3xl border border-white/25 p-5">
+                    <p class="text-center text-[11px] uppercase tracking-widest text-emerald-100 mb-3">Pencapaian Utama</p>
+                    <div class="grid grid-cols-3 gap-2"><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="85.2" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">85,2%</span></div><p class="text-xs font-bold mt-2">Karet</p><p class="text-[10px] text-emerald-100">% RKAP s.d. hari ini</p></div><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="81.7" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">81,7%</span></div><p class="text-xs font-bold mt-2">Kelapa</p><p class="text-[10px] text-emerald-100">% RKAP s.d. hari ini</p></div><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="95.0" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">95,0%</span></div><p class="text-xs font-bold mt-2">Karyawan</p><p class="text-[10px] text-emerald-100">vs posisi awal tahun</p></div></div>
+                </div>
+            </div>
+            <p class="relative text-[11px] text-emerald-100 mt-5">Produksi s.d. 3 Oktober 2026 &bull; Mutasi SDM s.d. September 2026 &bull; Komposisi karyawan s.d. Agustus 2026</p>
+        </section>
+
+        <div class="mt-5 overflow-hidden rounded-2xl bg-white ring-1 ring-brand-100 shadow-sm py-3"><div class="marq"><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karet 85,21% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Kelapa 81,69% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Sawit Oktober 14.324 KG</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karyawan 548 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Perempuan 32 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pensiun 30 orang (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Curah hujan Oktober 0 mm</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pekerja aktif 556 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karet 85,21% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Kelapa 81,69% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Sawit Oktober 14.324 KG</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karyawan 548 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Perempuan 32 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pensiun 30 orang (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Curah hujan Oktober 0 mm</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pekerja aktif 556 orang</span></div></div>
+    </div>
+
+    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+        <div id="tab-produksi" class="panel space-y-8">
 
         <!-- Top Stat Cards -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Karet Kering -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-brand-600 hover:shadow-md transition">
+            <div class="bg-white rounded-3xl p-6 shadow-md border-l-4 border-brand-600 hover:shadow-md transition">
                 <div class="flex justify-between items-start mb-2">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-1 rounded-md">Karet Kering</span>
-                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">437.391 <span class="text-sm font-medium text-gray-500">KG</span></h2>
-                        <p class="text-xs text-gray-500 mt-0.5">s.d. 2 Oktober 2026 (RKAP: 513.400 KG)</p>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">443.056 <span class="text-sm font-medium text-gray-500">KG</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. Oktober 2026 (RKAP s.d. hari ini: 519.978 KG)</p>
                     </div>
-                    <div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-tree"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center text-xl"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2L5 12h4l-3 6h5v4h2v-4h5l-3-6h4z"/></svg></div>
                 </div>
                 <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
-                    <span>Bulan Ini: <b class="text-gray-800">49.235 KG</b></span>
-                    <span class="font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">% RKAP: 85,20%</span>
+                    <span>Bulan Ini: <b class="text-gray-800">5.665 KG</b></span>
+                    <span class="font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">% RKAP: 85,21%</span>
                 </div>
             </div>
 
-            <!-- Kelapa -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-emerald-500 hover:shadow-md transition">
+            <div class="bg-white rounded-3xl p-6 shadow-md border-l-4 border-emerald-500 hover:shadow-md transition">
                 <div class="flex justify-between items-start mb-2">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-md">Kelapa</span>
-                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">686.108 <span class="text-sm font-medium text-gray-500">Butir</span></h2>
-                        <p class="text-xs text-gray-500 mt-0.5">s.d. 2 Oktober 2026 (RKAP: 800.600 Btr)</p>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">662.004 <span class="text-sm font-medium text-gray-500">Butir</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. 3 Oktober 2026 (RKAP s.d. hari ini: 810.422 Btr)</p>
                     </div>
-                    <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-seedling"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg></div>
                 </div>
                 <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
-                    <span>Bulan Ini: <b class="text-gray-800">72.839 Btr</b></span>
-                    <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">% RKAP: 85,70%</span>
+                    <span>Bulan Ini: <b class="text-gray-800">5.869 Btr</b></span>
+                    <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">% RKAP: 81,69%</span>
                 </div>
             </div>
 
-            <!-- Sawit -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-green-700 hover:shadow-md transition">
+            <div class="bg-white rounded-3xl p-6 shadow-md border-l-4 border-green-700 hover:shadow-md transition">
                 <div class="flex justify-between items-start mb-2">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Sawit</span>
-                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">43.763,31 <span class="text-sm font-medium text-gray-500">KG</span></h2>
-                        <p class="text-xs text-gray-500 mt-0.5">s.d. 2 Oktober 2026</p>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">1.524.103 <span class="text-sm font-medium text-gray-500">KG</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. Oktober 2026 (Ex PT RAS)</p>
                     </div>
-                    <div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-xl"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2L2 7l10 5 10-5zM4.6 11L2 12.3l10 5 10-5L19.4 11 12 14.7zM4.6 16L2 17.3l10 5 10-5-2.6-1.3L12 19.7z"/></svg></div>
                 </div>
                 <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
-                    <span>Bulan Ini: <b class="text-gray-800">106.969 KG</b></span>
+                    <span>Bulan Ini: <b class="text-gray-800">14.324 KG</b></span>
                     <span class="font-semibold text-green-700 bg-green-50 px-2 py-0.5 rounded border border-green-200">Status Operasional: Aktif</span>
                 </div>
             </div>
         </section>
 
-        <!-- Visual Analytics & Operational Status -->
+        <!-- Chart & Indikator -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Production Trend Chart -->
-            <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-brand-100">
-                <div class="flex justify-between items-center mb-4">
-                    <div>
-                        <h3 class="font-bold text-gray-800 text-base">Grafik Realisasi vs RKAP Karet Kering 2026</h3>
-                        <p class="text-xs text-gray-500">Perbandingan volume produksi bulanan (Kilogram) s.d. September 2026</p>
-                    </div>
+            <div class="lg:col-span-2 bg-white rounded-3xl p-6 shadow-md border border-brand-100">
+                <div class="mb-4">
+                    <h3 class="font-bold text-gray-800 text-base">Grafik Realisasi vs RKAP Karet Kering 2026</h3>
+                    <p class="text-xs text-gray-500">Perbandingan volume produksi bulanan (Kilogram) s.d. Oktober 2026 (Oktober masih berjalan)</p>
                 </div>
-                <div class="relative h-72">
-                    <canvas id="productionChart"></canvas>
-                </div>
+                <div class="relative h-72"><canvas id="productionChart"></canvas></div>
             </div>
 
-            <!-- Operational Metrics Card -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-brand-100 flex flex-col justify-between">
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-brand-100 flex flex-col justify-between">
                 <div>
                     <h3 class="font-bold text-gray-800 text-base mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-sliders text-brand-600"></i> Indikator Tenaga Kerja & Cuaca
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M4 6h10v2H4zm12 0h4v2h-4zM4 11h4v2H4zm6 0h10v2H10zM4 16h12v2H4zm14 0h2v2h-2z"/></svg> Indikator Tenaga Kerja & Cuaca
                     </h3>
-
-                    <!-- Kehadiran HK -->
                     <div class="space-y-2 mb-6">
                         <div class="flex justify-between text-xs font-semibold">
-                            <span class="text-gray-600">Kehadiran Penyadap (HK)</span>
-                            <span class="text-brand-800 font-bold">6.938 / 8.580 (80,86%)</span>
+                            <span class="text-gray-600">Kehadiran Penyadap Okt (HK)</span>
+                            <span class="text-brand-800 font-bold">803 / 8.910 (target sebulan)</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-                            <div class="bg-brand-600 h-3 rounded-full" style="width: 80.86%"></div>
+                            <div class="bg-brand-600 h-3 rounded-full" style="width: 9.01%"></div>
                         </div>
                     </div>
-
-                    <!-- Jumlah Pekerja Aktif -->
                     <div class="space-y-2 mb-6">
                         <div class="flex justify-between text-xs font-semibold">
                             <span class="text-gray-600">Total Pekerja Aktif</span>
-                            <span class="text-brand-800 font-bold">4.993 Orang</span>
+                            <span class="text-brand-800 font-bold">556 Orang</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
                             <div class="bg-emerald-500 h-3 rounded-full" style="width: 100%"></div>
                         </div>
+                        <p class="text-[11px] text-gray-500">Beteleme 291 &bull; Awaya 265</p>
                     </div>
-
-                    <!-- Curah Hujan -->
-                    <div class="bg-brand-50/50 p-4 rounded-xl border border-brand-100 space-y-2">
+                    <div class="bg-brand-50/50 p-4 rounded-xl border border-brand-100">
                         <div class="flex items-center gap-3">
-                            <div class="p-2.5 bg-white text-blue-500 rounded-lg shadow-sm">
-                                <i class="fa-solid fa-cloud-sun-rain text-xl"></i>
-                            </div>
+                            <div class="p-2.5 bg-white text-emerald-500 rounded-lg shadow-md"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M6.5 19a4.5 4.5 0 01-.4-9A6 6 0 0117.6 9.5 4.8 4.8 0 0117 19z"/></svg></div>
                             <div>
-                                <p class="text-xs text-gray-500">Curah Hujan Bulan September</p>
+                                <p class="text-xs text-gray-500">Curah Hujan Bulan Oktober</p>
                                 <p class="text-sm font-bold text-gray-800">0 MM <span class="font-normal text-xs text-gray-500">(0 Hari Hujan)</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Unit Overview Cards -->
                 <div class="mt-6 pt-4 border-t border-gray-100 grid grid-cols-2 gap-2 text-center text-xs">
                     <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100">
-                        <span class="block font-bold text-brand-800 text-sm">437.391 KG</span>
+                        <span class="block font-bold text-brand-800 text-sm">443.056 KG</span>
                         <span class="text-gray-500">Total Karet Kumulatif</span>
                     </div>
                     <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100">
-                        <span class="block font-bold text-brand-800 text-sm">686.108 Btr</span>
+                        <span class="block font-bold text-brand-800 text-sm">662.004 Btr</span>
                         <span class="text-gray-500">Total Kelapa Kumulatif</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Table Rekapitulasi Produksi Bulanan Regional 8 -->
-        <section class="bg-white rounded-2xl shadow-sm border border-brand-100 overflow-hidden">
-            <div class="p-5 bg-gradient-to-r from-brand-800 to-brand-900 text-white flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-base">Rekapitulasi Produksi Bulanan Regional 8 (Januari - Desember 2026)</h3>
-                    <p class="text-xs text-brand-100">Sumber: Google Spreadsheet resmi PTPN Regional 8</p>
-                </div>
+        <!-- Deviasi terhadap RKAP -->
+        <section id="deviasi" class="grid grid-cols-1 md:grid-cols-2 gap-6"></section>
+
+        <!-- Grafik tambahan -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-brand-100"><h3 class="font-bold text-gray-800 text-base mb-3">Realisasi vs RKAP Kelapa Butir</h3><div class="relative h-64"><canvas id="chKelapa"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-brand-100"><h3 class="font-bold text-gray-800 text-base mb-3">Produksi Sawit Bulanan (KG)</h3><div class="relative h-64"><canvas id="chSawit"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-brand-100"><h3 class="font-bold text-gray-800 text-base mb-3">Kehadiran Penyadap (HK) Real vs Target</h3><div class="relative h-64"><canvas id="chHK"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-brand-100"><h3 class="font-bold text-gray-800 text-base mb-3">Curah Hujan (MM) & Hari Hujan</h3><div class="relative h-64"><canvas id="chHujan"></canvas></div></div>
+        </section>
+
+        <!-- Rekap Bulanan -->
+        <section class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
+            <div class="p-5 bg-gradient-to-r from-brand-800 to-brand-900 text-white">
+                <h3 class="font-bold text-base">Rekapitulasi Produksi Bulanan Regional 8 (Januari - Desember 2026)</h3>
+                <p class="text-xs text-brand-100">Sumber: Google Spreadsheet resmi PTPN Regional 8</p>
             </div>
             <div class="overflow-x-auto custom-scrollbar">
                 <table class="w-full text-xs text-left text-gray-600">
@@ -213,139 +217,17 @@
                             <th class="px-4 py-3 font-bold">Sawit Real (KG)</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Januari</td>
-                            <td class="px-4 py-3">45.105</td>
-                            <td class="px-4 py-3">50.700</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">89%</td>
-                            <td class="px-4 py-3">61.478</td>
-                            <td class="px-4 py-3">87.400</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">70%</td>
-                            <td class="px-4 py-3">13.230</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Februari</td>
-                            <td class="px-4 py-3">38.813</td>
-                            <td class="px-4 py-3">57.400</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">68%</td>
-                            <td class="px-4 py-3">61.494</td>
-                            <td class="px-4 py-3">87.400</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">70%</td>
-                            <td class="px-4 py-3">152.150</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Maret</td>
-                            <td class="px-4 py-3">39.818</td>
-                            <td class="px-4 py-3">47.600</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">84%</td>
-                            <td class="px-4 py-3">61.004</td>
-                            <td class="px-4 py-3">87.400</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">70%</td>
-                            <td class="px-4 py-3">217.930</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">April</td>
-                            <td class="px-4 py-3">51.731</td>
-                            <td class="px-4 py-3">65.300</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">79%</td>
-                            <td class="px-4 py-3">99.354</td>
-                            <td class="px-4 py-3">88.900</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">112%</td>
-                            <td class="px-4 py-3">319.030</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Mei</td>
-                            <td class="px-4 py-3">53.250</td>
-                            <td class="px-4 py-3">67.500</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">79%</td>
-                            <td class="px-4 py-3">48.822</td>
-                            <td class="px-4 py-3">89.900</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">54%</td>
-                            <td class="px-4 py-3">216.020</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Juni</td>
-                            <td class="px-4 py-3">52.252</td>
-                            <td class="px-4 py-3">67.000</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">78%</td>
-                            <td class="px-4 py-3">62.052</td>
-                            <td class="px-4 py-3">89.900</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">69%</td>
-                            <td class="px-4 py-3">172.930</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Juli</td>
-                            <td class="px-4 py-3">55.188</td>
-                            <td class="px-4 py-3">56.500</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">98%</td>
-                            <td class="px-4 py-3">68.669</td>
-                            <td class="px-4 py-3">89.900</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">76%</td>
-                            <td class="px-4 py-3">212.250</td>
-                        </tr>
-                        <tr class="hover:bg-brand-50/30 transition">
-                            <td class="px-4 py-3 font-semibold text-gray-800">Agustus</td>
-                            <td class="px-4 py-3">51.999</td>
-                            <td class="px-4 py-3">46.000</td>
-                            <td class="px-4 py-3 font-semibold text-brand-700">113%</td>
-                            <td class="px-4 py-3">118.465</td>
-                            <td class="px-4 py-3">86.154</td>
-                            <td class="px-4 py-3 font-semibold text-emerald-700">138%</td>
-                            <td class="px-4 py-3">99.270</td>
-                        </tr>
-                        <tr class="bg-brand-50/80 hover:bg-brand-100/60 transition">
-                            <td class="px-4 py-3 font-bold text-brand-900">September (s.d. 2 Okt)</td>
-                            <td class="px-4 py-3 font-bold text-gray-900">49.235</td>
-                            <td class="px-4 py-3 font-bold text-gray-900">55.400</td>
-                            <td class="px-4 py-3 font-bold text-brand-800">89%</td>
-                            <td class="px-4 py-3 font-bold text-gray-900">72.839</td>
-                            <td class="px-4 py-3 font-bold text-gray-900">89.900</td>
-                            <td class="px-4 py-3 font-bold text-emerald-800">81%</td>
-                            <td class="px-4 py-3 font-bold text-gray-900">106.969</td>
-                        </tr>
-                        <tr class="text-gray-400">
-                            <td class="px-4 py-3 font-medium">Oktober (RKAP)</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">59.200</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">88.400</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">-</td>
-                        </tr>
-                        <tr class="text-gray-400">
-                            <td class="px-4 py-3 font-medium">November (RKAP)</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">65.200</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">88.400</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">-</td>
-                        </tr>
-                        <tr class="text-gray-400">
-                            <td class="px-4 py-3 font-medium">Desember (RKAP)</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">66.200</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">82.600</td>
-                            <td class="px-4 py-3">-</td>
-                            <td class="px-4 py-3">-</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="bulananBody" class="divide-y divide-gray-100"></tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Section Rincian Kebun Per Komoditas -->
+        <!-- Rincian Kebun -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Rincian Kebun Karet -->
-            <div class="bg-white rounded-2xl shadow-sm border border-brand-100 overflow-hidden">
+            <div class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
                 <div class="p-4 bg-brand-700 text-white font-bold text-sm flex justify-between items-center">
                     <span>Rincian Kebun Karet (Beteleme & Awaya)</span>
-                    <span class="text-xs bg-brand-800 px-2.5 py-1 rounded">s.d. 2 Okt 2026</span>
+                    <span class="text-xs bg-brand-800 px-2.5 py-1 rounded">s.d. Okt 2026</span>
                 </div>
                 <div class="overflow-x-auto custom-scrollbar">
                     <table class="w-full text-xs text-left text-gray-600">
@@ -353,39 +235,23 @@
                             <tr>
                                 <th class="px-4 py-2.5 font-bold">Kebun</th>
                                 <th class="px-4 py-2.5 font-bold">Realisasi (KG)</th>
-                                <th class="px-4 py-2.5 font-bold">RKAP (KG)</th>
+                                <th class="px-4 py-2.5 font-bold">RKAP s.d. Okt (KG)</th>
                                 <th class="px-4 py-2.5 font-bold">% Pencapaian</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <tr class="hover:bg-brand-50/20">
-                                <td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Beteleme</td>
-                                <td class="px-4 py-2.5">328.043</td>
-                                <td class="px-4 py-2.5">385.050</td>
-                                <td class="px-4 py-2.5 font-bold text-brand-700">85,19%</td>
-                            </tr>
-                            <tr class="hover:bg-brand-50/20">
-                                <td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td>
-                                <td class="px-4 py-2.5">109.348</td>
-                                <td class="px-4 py-2.5">128.350</td>
-                                <td class="px-4 py-2.5 font-bold text-brand-700">85,20%</td>
-                            </tr>
-                            <tr class="bg-brand-50 font-bold text-brand-900">
-                                <td class="px-4 py-2.5">Total Karet Regional 8</td>
-                                <td class="px-4 py-2.5">437.391</td>
-                                <td class="px-4 py-2.5">513.400</td>
-                                <td class="px-4 py-2.5 text-brand-800">85,20%</td>
-                            </tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Beteleme</td><td class="px-4 py-2.5">275.013</td><td class="px-4 py-2.5">413.000</td><td class="px-4 py-2.5 font-bold text-brand-700">66,59%</td></tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td><td class="px-4 py-2.5">168.042</td><td class="px-4 py-2.5">159.600</td><td class="px-4 py-2.5 font-bold text-brand-700">105,29%</td></tr>
+                            <tr class="bg-brand-50 font-bold text-brand-900"><td class="px-4 py-2.5">Total Karet Regional 8</td><td class="px-4 py-2.5">443.056</td><td class="px-4 py-2.5">572.600</td><td class="px-4 py-2.5 text-brand-800">77,38%</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Rincian Kebun Kelapa -->
-            <div class="bg-white rounded-2xl shadow-sm border border-emerald-100 overflow-hidden">
+            <div class="bg-white rounded-3xl shadow-md border border-emerald-100 overflow-hidden">
                 <div class="p-4 bg-emerald-700 text-white font-bold text-sm flex justify-between items-center">
                     <span>Rincian Kebun Kelapa (Awaya & Mira)</span>
-                    <span class="text-xs bg-emerald-800 px-2.5 py-1 rounded">s.d. 2 Okt 2026</span>
+                    <span class="text-xs bg-emerald-800 px-2.5 py-1 rounded">s.d. 3 Okt 2026</span>
                 </div>
                 <div class="overflow-x-auto custom-scrollbar">
                     <table class="w-full text-xs text-left text-gray-600">
@@ -393,41 +259,46 @@
                             <tr>
                                 <th class="px-4 py-2.5 font-bold">Kebun</th>
                                 <th class="px-4 py-2.5 font-bold">Realisasi (Btr)</th>
-                                <th class="px-4 py-2.5 font-bold">RKAP (Btr)</th>
+                                <th class="px-4 py-2.5 font-bold">RKAP s.d. Okt (Btr)</th>
                                 <th class="px-4 py-2.5 font-bold">% Pencapaian</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <tr class="hover:bg-emerald-50/20">
-                                <td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td>
-                                <td class="px-4 py-2.5">411.665</td>
-                                <td class="px-4 py-2.5">480.360</td>
-                                <td class="px-4 py-2.5 font-bold text-emerald-700">85,70%</td>
-                            </tr>
-                            <tr class="hover:bg-emerald-50/20">
-                                <td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Mira</td>
-                                <td class="px-4 py-2.5">274.443</td>
-                                <td class="px-4 py-2.5">320.240</td>
-                                <td class="px-4 py-2.5 font-bold text-emerald-700">85,70%</td>
-                            </tr>
-                            <tr class="bg-emerald-50 font-bold text-emerald-900">
-                                <td class="px-4 py-2.5">Total Kelapa Regional 8</td>
-                                <td class="px-4 py-2.5">686.108</td>
-                                <td class="px-4 py-2.5">800.600</td>
-                                <td class="px-4 py-2.5 text-emerald-800">85,70%</td>
-                            </tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td><td class="px-4 py-2.5">412.637</td><td class="px-4 py-2.5">466.000</td><td class="px-4 py-2.5 font-bold text-emerald-700">88,55%</td></tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Mira</td><td class="px-4 py-2.5">249.367</td><td class="px-4 py-2.5">423.000</td><td class="px-4 py-2.5 font-bold text-emerald-700">58,95%</td></tr>
+                            <tr class="bg-emerald-50 font-bold text-emerald-900"><td class="px-4 py-2.5">Total Kelapa Regional 8</td><td class="px-4 py-2.5">662.004</td><td class="px-4 py-2.5">889.000</td><td class="px-4 py-2.5 text-emerald-800">74,47%</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
-        <!-- Tabel Produksi Harian September 2026 (1 - 30 September) -->
-        <section class="bg-white rounded-2xl shadow-sm border border-brand-100 overflow-hidden">
+        <!-- Rincian bulanan per kebun -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
+                <div class="p-4 bg-brand-700 text-white font-bold text-sm">Karet Kebun Beteleme - Bulanan</div>
+                <div class="overflow-x-auto custom-scrollbar"><table class="w-full text-xs text-left text-gray-600"><thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr><th class="px-3 py-2.5 font-bold">Bulan</th><th class="px-3 py-2.5 font-bold">Real (KG)</th><th class="px-3 py-2.5 font-bold">RKAP (KG)</th><th class="px-3 py-2.5 font-bold">%</th><th class="px-3 py-2.5 font-bold">HK Real</th><th class="px-3 py-2.5 font-bold">HK Target</th><th class="px-3 py-2.5 font-bold">Hujan (MM)</th><th class="px-3 py-2.5 font-bold">Hari Hujan</th></tr></thead><tbody id="tBet" class="divide-y divide-gray-100"></tbody></table></div>
+            </div>
+            <div class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
+                <div class="p-4 bg-brand-700 text-white font-bold text-sm">Karet Kebun Awaya - Bulanan</div>
+                <div class="overflow-x-auto custom-scrollbar"><table class="w-full text-xs text-left text-gray-600"><thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr><th class="px-3 py-2.5 font-bold">Bulan</th><th class="px-3 py-2.5 font-bold">Real (KG)</th><th class="px-3 py-2.5 font-bold">RKAP (KG)</th><th class="px-3 py-2.5 font-bold">%</th><th class="px-3 py-2.5 font-bold">HK Real</th><th class="px-3 py-2.5 font-bold">HK Target</th><th class="px-3 py-2.5 font-bold">Hujan (MM)</th><th class="px-3 py-2.5 font-bold">Hari Hujan</th></tr></thead><tbody id="tAwK" class="divide-y divide-gray-100"></tbody></table></div>
+            </div>
+            <div class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
+                <div class="p-4 bg-emerald-700 text-white font-bold text-sm">Kelapa Kebun Mira - Bulanan</div>
+                <div class="overflow-x-auto custom-scrollbar"><table class="w-full text-xs text-left text-gray-600"><thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr><th class="px-3 py-2.5 font-bold">Bulan</th><th class="px-3 py-2.5 font-bold">Real (Btr)</th><th class="px-3 py-2.5 font-bold">RKAP (Btr)</th><th class="px-3 py-2.5 font-bold">%</th></tr></thead><tbody id="tMira" class="divide-y divide-gray-100"></tbody></table></div>
+            </div>
+            <div class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
+                <div class="p-4 bg-emerald-700 text-white font-bold text-sm">Kelapa Kebun Awaya - Bulanan</div>
+                <div class="overflow-x-auto custom-scrollbar"><table class="w-full text-xs text-left text-gray-600"><thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr><th class="px-3 py-2.5 font-bold">Bulan</th><th class="px-3 py-2.5 font-bold">Real (Btr)</th><th class="px-3 py-2.5 font-bold">RKAP (Btr)</th><th class="px-3 py-2.5 font-bold">%</th></tr></thead><tbody id="tAwL" class="divide-y divide-gray-100"></tbody></table></div>
+            </div>
+        </section>
+
+        <!-- Harian Oktober -->
+        <section class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
             <div class="p-5 bg-white border-b border-gray-100 flex justify-between items-center">
                 <div>
-                    <h3 class="font-bold text-gray-800 text-base">Tabel Produksi Harian September 2026 (1 - 30 September)</h3>
-                    <p class="text-xs text-gray-500">Nilai riil presisi dari Google Spreadsheet resmi PTPN Regional 8</p>
+                    <h3 class="font-bold text-gray-800 text-base">Tabel Produksi Harian Oktober 2026 (1 - 4 Oktober)</h3>
+                    <p class="text-xs text-gray-500">Nilai riil dari Google Spreadsheet resmi PTPN Regional 8 (kelapa & sawit s.d. 3 Oktober)</p>
                 </div>
                 <span class="text-xs text-brand-800 font-semibold bg-brand-50 px-3 py-1 rounded-lg border border-brand-200">Laporan Harian Unit</span>
             </div>
@@ -443,121 +314,414 @@
                             <th class="px-4 py-3 font-bold">Kumulatif Kelapa (Btr)</th>
                             <th class="px-4 py-3 font-bold">% s.d. Hari Ini (Karet)</th>
                             <th class="px-4 py-3 font-bold">% s.d. Hari Ini (Kelapa)</th>
+                            <th class="px-4 py-3 font-bold">RKAP Kum. Karet (KG)</th>
+                            <th class="px-4 py-3 font-bold">RKAP Kum. Kelapa (Btr)</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        <script>
-                            const harianSpreadsheet = [
-                                {tgl: "1 September 2026", karet: "1.484", kelapa: "2.949", sawit: "1.260", kumKaret: "389.639", kumKelapa: "586.218", pctK: "84,68%", pctKl: "82,09%"},
-                                {tgl: "2 September 2026", karet: "1.417", kelapa: "2.765", sawit: "8.480", kumKaret: "391.055", kumKelapa: "588.983", pctK: "84,60%", pctKl: "82,08%"},
-                                {tgl: "3 September 2026", karet: "1.687", kelapa: "2.609", sawit: "1.400", kumKaret: "392.742", kumKelapa: "591.592", pctK: "84,57%", pctKl: "82,04%"},
-                                {tgl: "4 September 2026", karet: "1.760", kelapa: "2.909", sawit: "6.510", kumKaret: "394.502", kumKelapa: "594.501", pctK: "84,56%", pctKl: "82,05%"},
-                                {tgl: "5 September 2026", karet: "1.760", kelapa: "1.831", sawit: "4.030", kumKaret: "396.262", kumKelapa: "596.332", pctK: "84,55%", pctKl: "81,92%"},
-                                {tgl: "6 September 2026", karet: "1.477", kelapa: "0", sawit: "2.110", kumKaret: "397.738", kumKelapa: "596.332", pctK: "84,87%", pctKl: "81,92%"},
-                                {tgl: "7 September 2026", karet: "1.887", kelapa: "2.055", sawit: "0", kumKaret: "399.625", kumKelapa: "598.387", pctK: "84,88%", pctKl: "81,81%"},
-                                {tgl: "8 September 2026", karet: "1.793", kelapa: "7.055", sawit: "0", kumKaret: "401.417", kumKelapa: "605.442", pctK: "84,88%", pctKl: "82,38%"},
-                                {tgl: "9 September 2026", karet: "1.872", kelapa: "3.126", sawit: "2.020", kumKaret: "403.289", kumKelapa: "608.568", pctK: "84,89%", pctKl: "82,42%"},
-                                {tgl: "10 September 2026", karet: "1.781", kelapa: "2.832", sawit: "7.140", kumKaret: "405.069", kumKelapa: "611.400", pctK: "84,89%", pctKl: "82,42%"},
-                                {tgl: "11 September 2026", karet: "1.871", kelapa: "2.528", sawit: "0", kumKaret: "406.940", kumKelapa: "613.928", pctK: "84,90%", pctKl: "82,38%"},
-                                {tgl: "12 September 2026", karet: "1.822", kelapa: "2.349", sawit: "7.177", kumKaret: "408.762", kumKelapa: "616.277", pctK: "84,90%", pctKl: "82,31%"},
-                                {tgl: "13 September 2026", karet: "1.869", kelapa: "0", sawit: "0", kumKaret: "410.630", kumKelapa: "616.277", pctK: "85,29%", pctKl: "82,31%"},
-                                {tgl: "14 September 2026", karet: "1.945", kelapa: "2.386", sawit: "6.763", kumKaret: "412.575", kumKelapa: "618.663", pctK: "85,32%", pctKl: "82,25%"},
-                                {tgl: "15 September 2026", karet: "1.853", kelapa: "3.331", sawit: "4.954", kumKaret: "414.428", kumKelapa: "621.994", pctK: "85,33%", pctKl: "82,31%"},
-                                {tgl: "16 September 2026", karet: "1.827", kelapa: "3.234", sawit: "0", kumKaret: "416.255", kumKelapa: "625.228", pctK: "85,33%", pctKl: "82,36%"},
-                                {tgl: "17 September 2026", karet: "1.801", kelapa: "2.827", sawit: "7.273", kumKaret: "418.056", kumKelapa: "628.055", pctK: "85,32%", pctKl: "82,36%"},
-                                {tgl: "18 September 2026", karet: "1.753", kelapa: "1.473", sawit: "6.979", kumKaret: "419.809", kumKelapa: "629.528", pctK: "85,31%", pctKl: "82,18%"},
-                                {tgl: "19 September 2026", karet: "3.258", kelapa: "1.692", sawit: "0", kumKaret: "423.066", kumKelapa: "631.220", pctK: "85,60%", pctKl: "82,03%"},
-                                {tgl: "20 September 2026", karet: "679", kelapa: "0", sawit: "8.350", kumKaret: "423.745", kumKelapa: "631.220", pctK: "85,74%", pctKl: "82,03%"},
-                                {tgl: "21 September 2026", karet: "1.626", kelapa: "2.793", sawit: "5.674", kumKaret: "425.371", kumKelapa: "634.013", pctK: "85,70%", pctKl: "82,03%"},
-                                {tgl: "22 September 2026", karet: "1.473", kelapa: "2.863", sawit: "0", kumKaret: "426.844", kumKelapa: "636.876", pctK: "85,63%", pctKl: "82,03%"},
-                                {tgl: "23 September 2026", karet: "1.639", kelapa: "2.645", sawit: "0", kumKaret: "428.483", kumKelapa: "639.521", pctK: "85,59%", pctKl: "82,01%"},
-                                {tgl: "24 September 2026", karet: "1.657", kelapa: "2.898", sawit: "12.170", kumKaret: "430.140", kumKelapa: "642.419", pctK: "85,56%", pctKl: "82,01%"},
-                                {tgl: "25 September 2026", karet: "1.543", kelapa: "2.919", sawit: "6.387", kumKaret: "431.682", kumKelapa: "645.338", pctK: "85,50%", pctKl: "82,02%"},
-                                {tgl: "26 September 2026", karet: "1.550", kelapa: "2.406", sawit: "0", kumKaret: "433.232", kumKelapa: "647.744", pctK: "85,45%", pctKl: "81,97%"},
-                                {tgl: "27 September 2026", karet: "1.102", kelapa: "0", sawit: "8.292", kumKaret: "434.334", kumKelapa: "647.744", pctK: "85,67%", pctKl: "81,97%"},
-                                {tgl: "28 September 2026", karet: "1.582", kelapa: "2.634", sawit: "0", kumKaret: "435.915", kumKelapa: "650.378", pctK: "85,62%", pctKl: "81,94%"},
-                                {tgl: "29 September 2026", karet: "1.894", kelapa: "3.070", sawit: "0", kumKaret: "437.809", kumKelapa: "653.448", pctK: "85,63%", pctKl: "81,97%"},
-                                {tgl: "30 September 2026", karet: "2.534", kelapa: "2.660", sawit: "0", kumKaret: "440.343", kumKelapa: "656.108", pctK: "85,77%", pctKl: "81,95%"}
-                            ];
-
-                            harianSpreadsheet.forEach(row => {
-                                const is30 = row.tgl.includes("30 September");
-                                document.write(`
-                                    <tr class="${is30 ? 'bg-emerald-100/80 font-bold text-brand-900' : 'hover:bg-brand-50/20'} transition">
-                                        <td class="px-4 py-2.5 font-medium">${row.tgl}</td>
-                                        <td class="px-4 py-2.5">${row.karet}</td>
-                                        <td class="px-4 py-2.5">${row.kelapa}</td>
-                                        <td class="px-4 py-2.5">${row.sawit}</td>
-                                        <td class="px-4 py-2.5 font-semibold text-gray-800">${row.kumKaret}</td>
-                                        <td class="px-4 py-2.5 font-semibold text-gray-800">${row.kumKelapa}</td>
-                                        <td class="px-4 py-2.5 text-brand-700">${row.pctK}</td>
-                                        <td class="px-4 py-2.5 text-emerald-700">${row.pctKl}</td>
-                                    </tr>
-                                `);
-                            });
-                        </script>
-                    </tbody>
+                    <tbody id="harianBody" class="divide-y divide-gray-100"></tbody>
                 </table>
             </div>
         </section>
+    </div>
+        <div id="tab-sdm" class="panel space-y-8 hidden">
 
+        <!-- KPI -->
+        <section id="kpi" class="grid grid-cols-2 lg:grid-cols-5 gap-4"></section>
+
+        <section id="genderBox" class="grid grid-cols-1 lg:grid-cols-5 gap-8"></section>
+
+        <div class="flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Laki-laki &amp; Perempuan per Unit</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section id="unitCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"></section>
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Perbandingan Laki-laki vs Perempuan per Unit (Orang)</h3><div class="relative h-72"><canvas id="cGender"></canvas></div></div>
+            <div id="gTotals" class="bg-gradient-to-br from-brand-800 to-emerald-600 text-white rounded-3xl p-6 shadow-md space-y-3"></div>
+        </section>
+        <div class="flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Sorotan Komposisi</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section id="insight" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></section>
+
+        <!-- Grafik -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Posisi Awal Tahun vs Per September 2026 (Orang)</h3><div class="relative h-64"><canvas id="c1"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Karyawan per Unit: Tetap vs Tidak Tetap (Agustus)</h3><div class="relative h-64"><canvas id="c2"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Karyawan Tetap Berdasarkan Pendidikan</h3><div class="relative h-64"><canvas id="c3"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Karyawan Tetap Berdasarkan Usia (Tahun)</h3><div class="relative h-64"><canvas id="c4"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Karyawan Tetap Berdasarkan Jenis Kelamin</h3><div class="relative h-64"><canvas id="c5"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-3">Penyebab Mutasi Karyawan Tetap (s.d. Agustus)</h3><div class="relative h-64"><canvas id="c6"></canvas></div></div>
+        </section>
+
+        <!-- Tabel -->
+        <div id="tables" class="space-y-8"></div>
+    </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-brand-900 text-brand-200 border-t border-brand-800 py-6 mt-12 text-center text-xs">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>© 2026 PT Perkebunan Nusantara Regional 8. Seluruh Hak Cipta Dilindungi.</p>
-            <p class="mt-1 text-brand-400">Sistem Monitoring & Reporting Produksi Komoditas Karet, Kelapa & Sawit.</p>
-        </div>
-    </footer>
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-800 text-white shadow-xl hover:scale-110 transition flex items-center justify-center" aria-label="Ke atas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="w-5 h-5"><path d="M6 15l6-6 6 6"/></svg></button>
+    <footer class="bg-brand-900 text-brand-200 border-t border-brand-800 py-6 mt-12 text-center text-xs">© 2026 PTPN I Regional 8. Sumber: spreadsheet resmi Regional 8.</footer>
 
-    <!-- Chart Config -->
     <script>
-        const ctx = document.getElementById('productionChart').getContext('2d');
-        new Chart(ctx, {
+        function showTab(t) {
+            ['produksi', 'sdm'].forEach(x => {
+                document.getElementById('tab-' + x).classList.toggle('hidden', x !== t);
+                const b = document.getElementById('b-' + x);
+                b.classList.toggle('on', x === t); b.classList.toggle('text-white', x !== t);
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => Object.values(Chart.instances).forEach(c => c.resize()), 60);
+        }
+    </script>
+    <script>
+        Chart.defaults.font.family = "Poppins, Inter, system-ui, sans-serif";
+        Chart.defaults.color = '#166534';
+        Chart.defaults.animation = { duration: 1200, easing: 'easeOutQuart' };
+        Object.assign(Chart.defaults.plugins.tooltip, { backgroundColor: '#14532d', cornerRadius: 12, padding: 12, titleColor: '#bbf7d0', boxPadding: 4 });
+    </script>
+    <script>(function () {
+        const fmt = n => n.toLocaleString('id-ID');
+        const pct = (a, b, d = 0) => (a / b * 100).toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d }) + '%';
+
+        // Data bulanan: [bulan, karetReal, karetRKAP, kelapaReal, kelapaRKAP, sawitReal]  (null = belum ada)
+        const bulanan = [
+            ['Januari', 45105, 50700, 61478, 87400, 13230],
+            ['Februari', 38813, 57400, 61494, 87400, 152150],
+            ['Maret', 39818, 47600, 61004, 87400, 217930],
+            ['April', 51731, 65300, 99354, 88900, 319030],
+            ['Mei', 53250, 67500, 48822, 89900, 216020],
+            ['Juni', 52252, 67000, 62052, 89900, 172930],
+            ['Juli', 55188, 56500, 68696, 89900, 212250],
+            ['Agustus', 51999, 46000, 118465, 86154, 99270],
+            ['September', 49235, 55400, 72839, 89900, 106969],
+            ['Oktober (berjalan)', 5665, 59200, 5869, 88400, 14324],
+            ['November (RKAP)', null, 65200, null, 88400, null],
+            ['Desember (RKAP)', null, 66200, null, 82600, null]
+        ];
+        document.getElementById('bulananBody').innerHTML = bulanan.map(r => {
+            const [bln, kr, kk, kl, kk2, sw] = r;
+            if (kr === null) return `<tr class="text-gray-400"><td class="px-4 py-3 font-medium">${bln}</td><td class="px-4 py-3">-</td><td class="px-4 py-3">${fmt(kk)}</td><td class="px-4 py-3">-</td><td class="px-4 py-3">-</td><td class="px-4 py-3">${fmt(kk2)}</td><td class="px-4 py-3">-</td><td class="px-4 py-3">-</td></tr>`;
+            const cur = bln.startsWith('Oktober');
+            const row = cur ? 'bg-brand-50/80 font-bold' : 'hover:bg-brand-50/30';
+            return `<tr class="${row} transition">
+                <td class="px-4 py-3 font-semibold text-gray-800">${bln}</td>
+                <td class="px-4 py-3">${fmt(kr)}</td><td class="px-4 py-3">${fmt(kk)}</td>
+                <td class="px-4 py-3 font-semibold text-brand-700">${pct(kr, kk)}</td>
+                <td class="px-4 py-3">${fmt(kl)}</td><td class="px-4 py-3">${fmt(kk2)}</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700">${pct(kl, kk2)}</td>
+                <td class="px-4 py-3">${fmt(sw)}</td></tr>`;
+        }).join('');
+
+        // Data harian Oktober: [tgl, karet, kelapa, sawit, kumKaret, kumKelapa, pctKaret, pctKelapa]
+        const harian = [
+            ['1 Oktober 2026', 1378, 1857, 14324, 438768, 657992, '85,10%', '81,85%', 515593, 803874],
+            ['2 Oktober 2026', 1451, 2324, 0, 440219, 660316, '85,02%', '81,81%', 517785, 807148],
+            ['3 Oktober 2026', 1408, 1688, 0, 441627, 662004, '84,93%', '81,69%', 519978, 810422],
+            ['4 Oktober 2026', 1429, 0, 0, 443056, 662004, '85,21%', '81,69%', 519978, 810422]
+        ];
+        document.getElementById('harianBody').innerHTML = harian.map((r, i) => `
+            <tr class="${i === harian.length - 1 ? 'bg-emerald-100/80 font-bold text-brand-900' : 'hover:bg-brand-50/20'} transition">
+                <td class="px-4 py-2.5 font-medium">${r[0]}</td>
+                <td class="px-4 py-2.5">${fmt(r[1])}</td><td class="px-4 py-2.5">${fmt(r[2])}</td><td class="px-4 py-2.5">${fmt(r[3])}</td>
+                <td class="px-4 py-2.5 font-semibold text-gray-800">${fmt(r[4])}</td>
+                <td class="px-4 py-2.5 font-semibold text-gray-800">${fmt(r[5])}</td>
+                <td class="px-4 py-2.5 text-brand-700">${r[6]}</td>
+                <td class="px-4 py-2.5 text-emerald-700">${r[7]}</td><td class="px-4 py-2.5">${fmt(r[8])}</td><td class="px-4 py-2.5">${fmt(r[9])}</td></tr>`).join('');
+
+        // Chart
+        const sel = bulanan.slice(0, 10);
+        new Chart(document.getElementById('productionChart').getContext('2d'), {
             type: 'bar',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt'],
                 datasets: [
-                    {
-                        label: 'Realisasi Karet (KG)',
-                        data: [45105, 38813, 39818, 51731, 53250, 52252, 55188, 51999, 49235],
-                        backgroundColor: '#16a34a',
-                        borderRadius: 6,
-                    },
-                    {
-                        label: 'RKAP Karet (KG)',
-                        data: [50700, 57400, 47600, 65300, 67500, 67000, 56500, 46000, 55400],
-                        backgroundColor: '#dcfce7',
-                        borderColor: '#22c55e',
-                        borderWidth: 1,
-                        borderRadius: 6,
-                    }
+                    { label: 'Realisasi Karet (KG)', data: sel.map(r => r[1]), backgroundColor: '#16a34a', borderRadius: 6 },
+                    { label: 'RKAP Karet (KG)', data: sel.map(r => r[2]), backgroundColor: '#dcfce7', borderColor: '#22c55e', borderWidth: 1, borderRadius: 6 }
                 ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            font: { size: 11, family: 'Inter' },
-                            usePointStyle: true
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: '#f3f4f6' }
-                    },
-                    x: {
-                        grid: { display: false }
-                    }
-                }
+                plugins: { legend: { position: 'top', labels: { font: { size: 11, family: 'Inter' }, usePointStyle: true } } },
+                scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } }
             }
         });
+
+        // ===== Tambahan: deviasi, grafik, rincian per kebun =====
+        const sum = (a, n) => a.slice(0, n).reduce((x, y) => x + y, 0);
+        const devCard = (judul, unit, real, rkap, warna) => `
+            <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 ${warna}">
+                <h3 class="font-bold text-gray-800 text-sm mb-3">${judul} <span class="text-xs font-normal text-gray-500">(realisasi s.d. September vs RKAP)</span></h3>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100"><span class="block font-bold text-brand-800 text-sm">${fmt(real)}</span>Realisasi (${unit}) &bull; ${pct(real, rkap, 2)}</div>
+                    <div class="p-2.5 bg-lime-50 rounded-lg border border-lime-200"><span class="block font-bold text-lime-700 text-sm">-${fmt(rkap - real)}</span>Deviasi (${unit}) &bull; -${pct(rkap - real, rkap, 2)}</div>
+                    <div class="p-2.5 bg-gray-50 rounded-lg border border-gray-200"><span class="block font-bold text-gray-800 text-sm">${fmt(rkap)}</span>RKAP (${unit}) &bull; 100%</div>
+                </div>
+            </div>`;
+        document.getElementById('deviasi').innerHTML =
+            devCard('Karet Kering', 'KG', sum(bulanan.map(r => r[1]), 9), sum(bulanan.map(r => r[2]), 9), 'border-brand-600') +
+            devCard('Kelapa Butir', 'Btr', sum(bulanan.map(r => r[3]), 9), sum(bulanan.map(r => r[4]), 9), 'border-emerald-500');
+
+        const BL = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        const BS = BL.map(b => b.slice(0, 3));
+        const opt = { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { font: { size: 11 }, usePointStyle: true } } }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } };
+        const rkapLine = d => ({ label: 'RKAP', data: d, backgroundColor: '#dcfce7', borderColor: '#22c55e', borderWidth: 1, borderRadius: 6 });
+        const nul = a => a.concat([null, null]);
+
+        new Chart(document.getElementById('chKelapa'), { type: 'bar', data: { labels: BS, datasets: [
+            { label: 'Realisasi', data: nul(bulanan.slice(0, 10).map(r => r[3])), backgroundColor: '#10b981', borderRadius: 6 },
+            rkapLine(bulanan.map(r => r[4])) ] }, options: opt });
+        new Chart(document.getElementById('chSawit'), { type: 'bar', data: { labels: BS.slice(0, 10), datasets: [
+            { label: 'Realisasi Sawit (KG)', data: bulanan.slice(0, 10).map(r => r[5]), backgroundColor: '#15803d', borderRadius: 6 } ] }, options: opt });
+
+        const hkR = [6616,4979,5772,7011,6712,7294,7264,7075,6931,803];
+        const hkT = [8250,7260,6600,8250,6930,7920,8910,7590,8580,8910];
+        new Chart(document.getElementById('chHK'), { type: 'bar', data: { labels: BS, datasets: [
+            { label: 'HK Real', data: nul(hkR), backgroundColor: '#16a34a', borderRadius: 6 },
+            { label: 'HK Target', data: [...hkT, 8250, 8250], type: 'line', borderColor: '#14532d', backgroundColor: '#14532d', tension: 0.3 } ] }, options: opt });
+
+        const mm = [223,587,356,380,583,115,190,16,5,0], hh = [13,23,21,20,20,8,10,3,1,0];
+        new Chart(document.getElementById('chHujan'), { type: 'bar', data: { labels: BS.slice(0, 10), datasets: [
+            { label: 'Curah Hujan (MM)', data: mm, backgroundColor: '#86efac', borderRadius: 6, yAxisID: 'y' },
+            { label: 'Hari Hujan', data: hh, type: 'line', borderColor: '#14532d', backgroundColor: '#14532d', tension: 0.3, yAxisID: 'y1' } ] },
+            options: { ...opt, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, y1: { beginAtZero: true, position: 'right', grid: { display: false } }, x: { grid: { display: false } } } } });
+
+        // Rincian per kebun: [real, rkap, hkReal, hkTarget, mm, hariHujan]
+        const dBet = [[29497,36300,3857,4925,187,12],[18675,41100,2181,4334,369,22],[19897,31600,2779,3940,200,15],[33280,48000,3976,4925,228,14],[36057,49000,4112,4137,169,12],[32911,48000,4458,4728,27,2],[35475,41000,4375,5319,91,6],[31422,33500,4235,4728,0,0],[33685,42000,4035,5122,0,0],[4116,42500,469,5319,0,0],[null,44000],[null,45000]];
+        const dAwK = [[15608,14400,2759,3325,36,5],[20138,16300,2798,2926,218,15],[19921,16000,2993,2660,156,10],[18451,17300,3035,3325,152,13],[17193,18500,2600,2793,414,12],[19342,19000,2836,3192,88,6],[19713,15500,2889,3591,99,6],[20577,12500,2840,3192,16,3],[15551,13400,2896,3458,5,1],[1549,16700,334,3591,0,0],[null,21200],[null,21200]];
+        const dMira = [[32330,41400],[36140,41400],[29015,41400],[27540,42900],[21610,42900],[18415,42900],[26885,42900],[26629,42900],[28763,42900],[2040,41400],[null,41400],[null,35600]];
+        const dAwL = [[29148,46000],[25354,46000],[31989,46000],[71814,46000],[27212,47000],[43637,47000],[41811,47000],[93767,47000],[44076,47000],[3829,47000],[null,47000],[null,47000]];
+        function tabelKebun(id, data, hk) {
+            const td = v => `<td class="px-3 py-2">${v}</td>`;
+            document.getElementById(id).innerHTML = data.map((r, i) => {
+                if (r[0] === null) return `<tr class="text-gray-400">${td(BL[i] + ' (RKAP)')}${td('-')}${td(fmt(r[1]))}${td('-')}${hk ? td('-').repeat(4) : ''}</tr>`;
+                const cur = i === 9;
+                return `<tr class="${cur ? 'bg-brand-50/80 font-bold' : 'hover:bg-brand-50/30'}">${td('<b>' + BL[i] + (cur ? ' (berjalan)' : '') + '</b>')}${td(fmt(r[0]))}${td(fmt(r[1]))}${td('<b class="text-brand-700">' + pct(r[0], r[1]) + '</b>')}${hk ? td(fmt(r[2])) + td(fmt(r[3])) + td(fmt(r[4])) + td(r[5]) : ''}</tr>`;
+            }).join('');
+        }
+        tabelKebun('tBet', dBet, true); tabelKebun('tAwK', dAwK, true);
+        tabelKebun('tMira', dMira, false); tabelKebun('tAwL', dAwL, false);
+    })();</script>
+    <script>(function () {
+        // ===== DATA =====
+        const mutSep = [
+            ['Region Head', 1, 0, 0, 0, 0, 0, 1],
+            ['Functional Head', 1, 0, 1, 0, 0, -1, 0],
+            ['Jumlah Regional Management', 2, 0, 1, 0, 0, -1, 1],
+            ['Golongan IV', 6, 2, 1, 0, 0, 1, 7],
+            ['Golongan III', 31, 3, 2, 0, 0, 1, 32],
+            ['Golongan II', 44, 0, 7, 0, 0, -7, 37],
+            ['Golongan I', 215, 0, 23, 0, 0, -23, 192],
+            ['Jumlah Karyawan Tetap', 296, 5, 33, 0, 0, -28, 268],
+            ['Honorarium', 32, 1, 5, 0, 0, -4, 28],
+            ['Kontrak Kerja Waktu Tertentu', 247, 43, 39, 0, 0, 4, 251],
+            ['Jumlah Karyawan Tidak Tetap', 279, 44, 44, 0, 0, 0, 279],
+            ['Total Karyawan', 577, 49, 78, 0, 0, -29, 548]
+        ];
+        const golongan = [
+            ['Kantor Regional 8', 0, 19, 9, 19, 7, 54, 0, 14, 0, 16, 0, 30, 84],
+            ['Kebun Awaya/Telpaputih', 0, 96, 15, 4, 0, 115, 0, 0, 0, 51, 0, 51, 166],
+            ['Kebun Beteleme', 0, 68, 14, 6, 0, 88, 0, 1, 0, 172, 0, 173, 261],
+            ['Kebun Mira', 0, 0, 1, 3, 0, 4, 0, 12, 0, 3, 0, 15, 19],
+            ['Ternak Kabaru', 0, 6, 1, 1, 0, 8, 0, 0, 0, 10, 0, 10, 18],
+            ['Jumlah Karyawan Kebun Unit', 0, 170, 31, 14, 0, 215, 0, 13, 0, 236, 0, 249, 464],
+            ['Total Karyawan', 0, 189, 40, 33, 7, 269, 0, 27, 0, 252, 0, 279, 548]
+        ];
+        const pendidikan = [
+            ['Kantor Regional 8', 2, 21, 4, 17, 3, 5, 52],
+            ['Kebun Awaya/Telpaputih', 0, 5, 2, 48, 32, 29, 116],
+            ['Kebun Beteleme', 1, 3, 1, 41, 18, 24, 88],
+            ['Kebun Mira', 0, 3, 0, 0, 0, 1, 4],
+            ['Ternak Kabaru', 0, 1, 1, 2, 0, 4, 8],
+            ['Jumlah Karyawan Kebun Unit', 1, 12, 4, 91, 50, 58, 216],
+            ['Total Karyawan', 3, 33, 8, 108, 53, 63, 268]
+        ];
+        const usia = [
+            ['Kantor Regional 8', 0, 7, 15, 15, 9, 6, 0, 52],
+            ['Kebun Awaya/Telpaputih', 1, 2, 5, 56, 40, 12, 0, 116],
+            ['Kebun Beteleme', 1, 1, 21, 35, 19, 11, 0, 88],
+            ['Kebun Mira', 0, 1, 1, 1, 1, 0, 0, 4],
+            ['Ternak Kabaru', 0, 0, 1, 5, 1, 1, 0, 8],
+            ['Jumlah Karyawan Kebun Unit', 2, 4, 28, 97, 61, 24, 0, 216],
+            ['Total Karyawan', 2, 11, 43, 112, 70, 30, 0, 268]
+        ];
+        const gender = [
+            ['Kantor Regional 8', 44, 8, 52],
+            ['Kebun Awaya/Telpaputih', 101, 15, 116],
+            ['Kebun Beteleme', 79, 9, 88],
+            ['Kebun Mira', 4, 0, 4],
+            ['Ternak Kabaru', 8, 0, 8],
+            ['Jumlah Karyawan Kebun Unit', 192, 24, 216],
+            ['Total Karyawan', 236, 32, 268]
+        ];
+        // Mutasi tetap: tambah (rekrutmen, mutasi, promosi, jumlah) | kurang (pensiun, meninggal, mutasi, promosi, mundur, jumlah)
+        const mutTetap = [
+            ['Kantor Regional 8', 0, 1, 0, 1, 2, 1, 0, 0, 0, 3],
+            ['Kebun Awaya/Telpaputih', 2, 0, 0, 2, 12, 0, 0, 0, 0, 12],
+            ['Kebun Beteleme', 1, 0, 0, 1, 5, 0, 0, 0, 1, 6],
+            ['Kebun Mira', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            ['Ternak Kabaru', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            ['PKS Luwu', 0, 0, 0, 0, 2, 0, 0, 0, 0, 2],
+            ['Kebun Keera Maroangin', 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            ['Kebun Luwu I', 0, 0, 0, 0, 2, 0, 0, 0, 0, 2],
+            ['Kebun Luwu II', 0, 0, 0, 0, 4, 0, 0, 0, 0, 4],
+            ['Kebun Asera', 0, 0, 0, 0, 2, 0, 0, 0, 0, 2],
+            ['Jumlah Unit Kebun Aneka Tanaman', 3, 0, 0, 3, 28, 0, 0, 0, 1, 29],
+            ['Jumlah Karyawan', 3, 1, 0, 4, 30, 1, 0, 0, 1, 32]
+        ];
+
+        // ===== KPI & GENDER =====
+        const sv = (inner, c = 'w-6 h-6') => `<svg viewBox="0 0 24 24" fill="currentColor" class="${c}">${inner}</svg>`;
+        const MAN = '<circle cx="12" cy="5" r="3"/><path d="M8 10h8a1 1 0 011 1v5h-2v6h-6v-6H7v-5a1 1 0 011-1z"/>';
+        const WOMAN = '<circle cx="12" cy="5" r="3"/><path d="M12 9c-2 0-3.5 1-4 3l-2 6h4v4h4v-4h4l-2-6c-.5-2-2-3-4-3z"/>';
+        const TEAM = '<circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><path d="M2 20c0-3.5 2.7-6 6-6s6 2.5 6 6zM14 14.3c.6-.2 1.3-.3 2-.3 3.3 0 6 2.5 6 6h-6c0-2.4-.7-4.3-2-5.7z"/>';
+        const SHIELD = '<path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5z"/>';
+        const CLOCK = '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+        const SWAP = '<path d="M7 4L3 8l4 4V9h10V7H7zM17 20l4-4-4-4v3H7v2h10z"/>';
+        const kpi = [
+            ['Total Karyawan', '548', 'Per Sep 2026 (awal tahun 577)', 'from-green-500 to-emerald-700', sv(TEAM)],
+            ['Karyawan Tetap', '268', 'Per Sep 2026 (awal tahun 296)', 'from-emerald-400 to-green-700', sv(SHIELD)],
+            ['Tidak Tetap', '279', 'Honorarium 28 + KKWT 251', 'from-lime-400 to-green-600', sv(CLOCK)],
+            ['Mutasi Bersih 2026', '-29', 'Tambah 49 &bull; Kurang 78 (s.d. Sep)', 'from-green-600 to-green-900', sv(SWAP)],
+            ['Perempuan', '32', '11,9% dari karyawan tetap (Agustus)', 'from-emerald-300 to-green-500', sv(WOMAN)]
+        ];
+        document.getElementById('kpi').innerHTML = kpi.map(k => `
+            <div class="relative overflow-hidden bg-white rounded-3xl p-5 shadow-md ring-1 ring-black/5 hover:-translate-y-1 hover:shadow-xl transition">
+                <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-20 bg-gradient-to-br ${k[3]}"></div>
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br ${k[3]} text-white flex items-center justify-center shadow">${k[4]}</div>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-gray-500 mt-3">${k[0]}</p>
+                <p class="text-3xl font-extrabold text-brand-900 mt-0.5"><span data-n="${k[1]}">0</span></p>
+                <p class="text-[11px] text-gray-500 mt-0.5">${k[2]}</p></div>`).join('');
+
+        document.querySelectorAll('[data-n]').forEach(el => {
+            const n = +el.dataset.n, t0 = performance.now();
+            (function f(now) { const k = Math.min((now - t0) / 900, 1); el.textContent = Math.round(n * k).toLocaleString('id-ID'); if (k < 1) requestAnimationFrame(f); })(t0);
+        });
+
+        // Sorotan gender: pictogram 100 orang + persentase perempuan per unit
+        const pctF = Math.round(32 / 268 * 100), pctM = 100 - pctF;
+        const picto = Array.from({ length: 100 }, (_, i) => `<span class="pop" style="animation-delay:${i * 12}ms">${i < pctM ? sv(MAN, 'w-5 h-5 text-green-800') : sv(WOMAN, 'w-5 h-5 text-emerald-400')}</span>`).join('');
+        const bars = gender.slice(0, 5).map(r => {
+            const f = r[3] ? r[2] / r[3] * 100 : 0;
+            return `<div><div class="flex justify-between text-xs mb-1"><span class="font-semibold text-gray-700">${r[0]}</span><span class="text-green-600 font-bold">${r[2]} perempuan &bull; ${f.toLocaleString('id-ID', { maximumFractionDigits: 1 })}%</span></div>
+                <div class="h-2.5 bg-green-100 rounded-full overflow-hidden"><div class="h-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-green-600" style="width:${f}%"></div></div></div>`;
+        }).join('');
+        document.getElementById('genderBox').innerHTML = `
+            <div class="lg:col-span-3 rounded-3xl p-6 shadow-md ring-1 ring-brand-100 bg-gradient-to-br from-white to-brand-50">
+                <h3 class="font-extrabold text-gray-800 text-base">Komposisi Gender Karyawan Tetap</h3>
+                <p class="text-xs text-gray-500 mb-4">Setiap ikon mewakili 1% dari 268 karyawan tetap (Agustus 2026)</p>
+                <div class="flex gap-6 mb-4">
+                    <div class="flex items-center gap-3"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-700 text-white flex items-center justify-center shadow">${sv(MAN, 'w-9 h-9')}</div><div><p class="text-3xl font-extrabold text-green-800">236</p><p class="text-xs text-gray-500">Laki-laki &bull; ${pctM}%</p></div></div>
+                    <div class="flex items-center gap-3"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-300 to-green-500 text-white flex items-center justify-center shadow">${sv(WOMAN, 'w-9 h-9')}</div><div><p class="text-3xl font-extrabold text-green-600">32</p><p class="text-xs text-gray-500">Perempuan &bull; ${pctF}%</p></div></div>
+                </div>
+                <div class="flex flex-wrap gap-1">${picto}</div>
+            </div>
+            <div class="lg:col-span-2 rounded-3xl p-6 shadow-md ring-1 ring-brand-100 bg-white space-y-3">
+                <h3 class="font-extrabold text-gray-800 text-base mb-1">Porsi Perempuan per Unit</h3>${bars}
+            </div>`;
+
+        // ===== TABEL =====
+        function card(title, periode, head, rows, header2) {
+            const th = head.map(x => `<th class="px-3 py-2.5 font-bold">${x}</th>`).join('');
+            const tr = rows.map(r => {
+                const tot = /^(Jumlah|Total)/.test(r[0]);
+                return `<tr class="${tot ? 'bg-brand-50 font-bold text-brand-900' : 'hover:bg-brand-50/30'}">` +
+                    r.map((v, i) => `<td class="px-3 py-2 ${i ? 'text-right' : 'font-medium text-gray-800'}">${i && v === 0 ? '-' : v}</td>`).join('') + '</tr>';
+            }).join('');
+            return `<div class="bg-white rounded-3xl shadow-md ring-1 ring-brand-100/70 overflow-hidden">
+                <div class="p-4 bg-gradient-to-r from-brand-700 to-emerald-500 text-white font-bold text-sm flex justify-between items-center gap-2"><span>${title}</span><span class="text-xs bg-brand-800 px-2.5 py-1 rounded whitespace-nowrap">${periode}</span></div>
+                <div class="overflow-x-auto custom-scrollbar"><table class="w-full text-xs text-gray-600"><thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr>${th}</tr></thead><tbody class="divide-y divide-gray-100">${tr}</tbody></table></div></div>`;
+        }
+        document.getElementById('tables').innerHTML =
+            card('Tabel 35: Mutasi Sumber Daya Manusia (Orang)', 's.d. September 2026', ['Uraian', 'Posisi Awal 2026', 'Tambah', 'Kurang', 'KSO Sawit', 'KSO Tebu', 'Jumlah', 'Posisi Per Sep 2026'], mutSep) +
+            card('Komposisi Karyawan Berdasarkan Golongan', 'Posisi s.d. Agustus 2026', ['Uraian', 'Non Gol.', 'Gol. I', 'Gol. II', 'Gol. III', 'Gol. IV', 'Jml Tetap', 'CKP', 'Honorer', 'THL', 'PKWT', 'Musiman', 'Jml Tdk Tetap', 'Total'], golongan) +
+            card('Komposisi Karyawan Berdasarkan Pendidikan', 'Posisi s.d. Agustus 2026', ['Uraian', 'S2', 'S1', 'Diploma', 'SLTA', 'SLTP', 'SD/Lainnya', 'Total'], pendidikan) +
+            card('Komposisi Karyawan Berdasarkan Usia (Orang)', 'Posisi s.d. Agustus 2026', ['Uraian', '< 26', '26-30', '31-40', '41-50', '51-53', '54-60', '> 60', 'Jumlah'], usia) +
+            card('Komposisi Karyawan Berdasarkan Jenis Kelamin (Orang)', 'Posisi s.d. Agustus 2026', ['Uraian', 'Laki-laki', 'Perempuan', 'Total'], gender) +
+            card('Tabel 38: Mutasi Karyawan Tetap (Orang)', 'Posisi s.d. Agustus 2026', ['Uraian', 'Rekrutmen', 'Mutasi (+)', 'Promosi (+)', 'Jml Tambah', 'Pensiun', 'Meninggal', 'Mutasi (-)', 'Promosi (-)', 'Mengundurkan Diri', 'Jml Kurang'], mutTetap);
+
+        // ===== GRAFIK =====
+        const P = ['#16a34a', '#22c55e', '#166534', '#86efac', '#86efac', '#14532d'];
+        const base = { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { font: { size: 11 }, usePointStyle: true } } }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } };
+        const mk = (id, type, labels, sets, o) => new Chart(document.getElementById(id), { type, data: { labels, datasets: sets }, options: o || base });
+        const ds = (label, data, c) => ({ label, data, backgroundColor: c, borderRadius: 4 });
+        const gUnit = golongan.slice(0, 5);
+
+        mk('c1', 'bar', ['Gol. IV', 'Gol. III', 'Gol. II', 'Gol. I', 'Honorarium', 'KKWT'],
+            [ds('Posisi Awal 2026', [6, 31, 44, 215, 32, 247], '#bbf7d0'), ds('Per Sep 2026', [7, 32, 37, 192, 28, 251], '#16a34a')]);
+        mk('c2', 'bar', gUnit.map(r => r[0].replace('Kebun ', '')),
+            [ds('Tetap', gUnit.map(r => r[6]), '#16a34a'), ds('Tidak Tetap', gUnit.map(r => r[12]), '#86efac')],
+            { ...base, scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true, grid: { color: '#f3f4f6' } } } });
+        mk('c3', 'bar', ['S2', 'S1', 'Diploma', 'SLTA', 'SLTP', 'SD/Lainnya'],
+            [ds('Orang', pendidikan[6].slice(1, 7), '#22c55e')], { ...base, plugins: { legend: { display: false } } });
+        mk('c4', 'bar', ['< 26', '26-30', '31-40', '41-50', '51-53', '54-60', '> 60'],
+            [ds('Orang', usia[6].slice(1, 8), '#166534')], { ...base, plugins: { legend: { display: false } } });
+        mk('c5', 'doughnut', ['Laki-laki', 'Perempuan'], [{ data: [236, 32], backgroundColor: ['#166534', '#4ade80'] }],
+            { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { position: 'bottom' } } });
+        mk('c6', 'bar', ['Rekrutmen', 'Mutasi masuk', 'Pensiun', 'Meninggal', 'Mengundurkan diri'],
+            [{ label: 'Orang', data: [3, 1, 30, 1, 1], backgroundColor: ['#4ade80', '#4ade80', '#166534', '#166534', '#166534'], borderRadius: 4 }],
+            { ...base, plugins: { legend: { display: false } } });
+    })();</script>
+<script>
+        (function () {
+            const sec = (before, text) => {
+                if (!before) return;
+                const d = document.createElement('div');
+                d.className = 'flex items-center gap-3';
+                d.innerHTML = `<span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">${text}</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span>`;
+                before.parentNode.insertBefore(d, before);
+            };
+            const sc = id => document.getElementById(id).closest('section');
+            sec(document.querySelector('#tab-produksi > section'), 'Ringkasan Produksi');
+            sec(sc('productionChart'), 'Grafik & Analisis Produksi');
+            sec(sc('bulananBody'), 'Data Rinci Produksi');
+            sec(document.getElementById('kpi'), 'Ringkasan Sumber Daya Manusia');
+            sec(sc('c1'), 'Grafik Komposisi Karyawan');
+            sec(document.getElementById('tables'), 'Data Rinci SDM');
+            requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.ring').forEach(r => {
+                r.style.strokeDashoffset = 213.6 * (1 - r.dataset.p / 100);
+            }), 250));
+        })();
+    </script>
+<script>
+        (function () {
+            const fmt1 = n => n.toLocaleString('id-ID', { maximumFractionDigits: 1 });
+            const sv = (d, c = 'w-6 h-6') => `<svg viewBox="0 0 24 24" fill="currentColor" class="${c}">${d}</svg>`;
+            const MAN = '<circle cx="12" cy="5" r="3"/><path d="M8 10h8a1 1 0 011 1v5h-2v6h-6v-6H7v-5a1 1 0 011-1z"/>';
+            const WOM = '<circle cx="12" cy="5" r="3"/><path d="M12 9c-2 0-3.5 1-4 3l-2 6h4v4h4v-4h4l-2-6c-.5-2-2-3-4-3z"/>';
+            const U = [['Kantor Regional 8', 44, 8], ['Kebun Awaya/Telpaputih', 101, 15], ['Kebun Beteleme', 79, 9], ['Kebun Mira', 4, 0], ['Ternak Kabaru', 8, 0]];
+
+            document.getElementById('unitCards').innerHTML = U.map(([n, m, f]) => {
+                const t = m + f, pm = m / t * 100, pf = f / t * 100;
+                return `<div class="rounded-3xl p-5 bg-white shadow-md ring-1 ring-brand-100">
+                    <div class="flex justify-between items-start gap-2"><div><p class="text-[10px] uppercase font-bold tracking-wider text-gray-400">Unit</p><h4 class="font-extrabold text-brand-900 leading-tight text-sm">${n}</h4></div><span class="text-xs font-bold bg-brand-100 text-brand-800 px-2.5 py-1 rounded-full whitespace-nowrap">${t} orang</span></div>
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <div class="rounded-2xl bg-green-50 p-3 text-center"><div class="w-10 h-10 mx-auto rounded-xl bg-gradient-to-br from-emerald-400 to-green-800 text-white flex items-center justify-center shadow">${sv(MAN, 'w-6 h-6')}</div><p class="text-2xl font-extrabold text-green-800 mt-1">${m}</p><p class="text-[11px] text-gray-500">Laki-laki</p></div>
+                        <div class="rounded-2xl bg-emerald-50 p-3 text-center"><div class="w-10 h-10 mx-auto rounded-xl bg-gradient-to-br from-emerald-200 to-green-500 text-white flex items-center justify-center shadow">${sv(WOM, 'w-6 h-6')}</div><p class="text-2xl font-extrabold text-emerald-500 mt-1">${f}</p><p class="text-[11px] text-gray-500">Perempuan</p></div>
+                    </div>
+                    <div class="flex h-2.5 rounded-full overflow-hidden mt-4 bg-green-100"><div class="bg-green-800" style="width:${pm}%"></div><div class="bg-emerald-300" style="width:${pf}%"></div></div>
+                    <div class="flex justify-between text-[11px] mt-1 font-semibold"><span class="text-green-800">${fmt1(pm)}% L</span><span class="text-emerald-500">${fmt1(pf)}% P</span></div></div>`;
+            }).join('');
+
+            new Chart(document.getElementById('cGender'), { type: 'bar',
+                data: { labels: U.map(r => r[0].replace('Kebun ', '').replace('Awaya/Telpaputih', 'Awaya')), datasets: [
+                    { label: 'Laki-laki', data: U.map(r => r[1]), backgroundColor: '#166534', borderRadius: 8 },
+                    { label: 'Perempuan', data: U.map(r => r[2]), backgroundColor: '#86efac', borderRadius: 8 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { usePointStyle: true } } }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } } });
+
+            const row = (l, m, f) => `<div class="bg-white/15 rounded-2xl p-3 border border-white/20"><p class="text-[11px] uppercase tracking-wider text-emerald-100">${l}</p><div class="flex justify-between items-end mt-1"><span class="text-sm">${sv(MAN, 'w-4 h-4 inline')} <b class="text-xl">${m}</b></span><span class="text-sm">${sv(WOM, 'w-4 h-4 inline text-emerald-200')} <b class="text-xl">${f}</b></span></div></div>`;
+            document.getElementById('gTotals').innerHTML = '<h3 class="font-extrabold text-base">Ringkasan Gender</h3><p class="text-xs text-emerald-100 -mt-2">Karyawan tetap, s.d. Agustus 2026</p>' +
+                row('Kantor Regional', 44, 8) + row('Kebun Unit', 192, 24) + row('Total Regional 8', 236, 32);
+
+            const I = [
+                ['Usia Dominan 41-50 th', '112', 41.8, 'dari 268 karyawan tetap', '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'],
+                ['Pendidikan Dominan SLTA', '108', 40.3, 'dari 268 karyawan tetap', '<path d="M12 3L1 9l11 6 9-4.9V17h2V9zM5 13.2v4L12 21l7-3.8v-4L12 17z"/>'],
+                ['Unit Terbesar: Beteleme', '261', 47.6, 'dari 548 total karyawan', '<path d="M4 21V5l8-3 8 3v16h-6v-5h-4v5z"/>'],
+                ['PKWT dari Tidak Tetap', '252', 90.3, 'dari 279 karyawan tidak tetap', '<path d="M10 4h4a2 2 0 012 2v1h4a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1h4V6a2 2 0 012-2zm0 2v1h4V6z"/>']];
+            document.getElementById('insight').innerHTML = I.map(([t, n, p, sub, ic]) => `
+                <div class="relative overflow-hidden rounded-3xl p-5 bg-white shadow-md ring-1 ring-brand-100">
+                    <div class="absolute -right-5 -top-5 w-20 h-20 rounded-full bg-brand-100 opacity-70"></div>
+                    <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-800 text-white flex items-center justify-center shadow">${sv(ic, 'w-5 h-5')}</div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-gray-500 mt-3">${t}</p>
+                    <p class="text-3xl font-extrabold text-brand-900">${n} <span class="text-sm font-semibold text-brand-600">${fmt1(p)}%</span></p>
+                    <div class="h-2 bg-green-100 rounded-full mt-2 overflow-hidden"><div class="h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-800" style="width:${p}%"></div></div>
+                    <p class="text-[11px] text-gray-500 mt-1">${sub}</p></div>`).join('');
+        })();
     </script>
 </body>
 </html>
