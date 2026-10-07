@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Produksi & SDM PTPN I Regional 8 - 2026</title>
+    <title>Dashboard Produksi, SDM & Keuangan PTPN I Regional 8 - 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -46,11 +46,12 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-2xl bg-white text-brand-700 flex items-center justify-center shadow-lg"><svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg></div>
-                <div><h1 class="text-lg font-extrabold tracking-wide">PTPN I Regional 8</h1><p class="text-[11px] text-emerald-100">Dashboard Produksi & Sumber Daya Manusia 2026</p></div>
+                <div><h1 class="text-lg font-extrabold tracking-wide">PTPN I Regional 8</h1><p class="text-[11px] text-emerald-100">Produksi, SDM, Keuangan & Akuntansi 2026</p></div>
             </div>
             <nav class="flex bg-white/15 backdrop-blur p-1 rounded-2xl border border-white/20 text-sm font-semibold">
                 <button id="b-produksi" class="tabbtn on px-5 py-2 rounded-xl" onclick="showTab('produksi')">Produksi</button>
                 <button id="b-sdm" class="tabbtn px-5 py-2 rounded-xl text-white" onclick="showTab('sdm')">Sumber Daya Manusia</button>
+                <button id="b-keu" class="tabbtn px-5 py-2 rounded-xl text-white" onclick="showTab('keu')">Keuangan &amp; Akuntansi</button>
             </nav>
         </div>
     </header>
@@ -64,18 +65,18 @@
                 <div class="md:col-span-3">
                     <p class="text-xs tracking-[.3em] uppercase text-emerald-100">Laporan Terpadu 2026</p>
                     <h2 class="text-4xl md:text-6xl font-extrabold mt-2 leading-tight">PTPN I <span class="text-emerald-200">Regional 8</span></h2>
-                    <p class="text-emerald-50 mt-3 max-w-xl text-sm">Produksi karet, kelapa, dan sawit bersama mutasi dan komposisi karyawan di Kantor Regional 8, Awaya, Beteleme, Mira, dan Ternak Kabaru.</p>
-                    <div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Karet Kering</p><p class="text-xl font-extrabold">444.698 <span class="text-xs font-medium text-emerald-100">KG</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Kelapa</p><p class="text-xl font-extrabold">663.447 <span class="text-xs font-medium text-emerald-100">Butir</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Sawit</p><p class="text-xl font-extrabold">1.530.967 <span class="text-xs font-medium text-emerald-100">KG</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Total Karyawan</p><p class="text-xl font-extrabold">548 <span class="text-xs font-medium text-emerald-100">Orang</span></p></div></div>
+                    <p class="text-emerald-50 mt-3 max-w-xl text-sm">Produksi karet, kelapa, dan sawit, komposisi karyawan, serta laba rugi per segmen dan posisi keuangan PTPN I Regional 8.</p>
+                    <div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Karet Kering</p><p class="text-xl font-extrabold">446.263 <span class="text-xs font-medium text-emerald-100">KG</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Kelapa</p><p class="text-xl font-extrabold">666.078 <span class="text-xs font-medium text-emerald-100">Butir</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Sawit</p><p class="text-xl font-extrabold">1.538.567 <span class="text-xs font-medium text-emerald-100">KG</span></p></div><div class="bg-white/15 backdrop-blur rounded-2xl px-4 py-3 border border-white/25 hover:bg-white/25 transition"><p class="text-[11px] uppercase tracking-wider text-emerald-100">Total Karyawan</p><p class="text-xl font-extrabold">548 <span class="text-xs font-medium text-emerald-100">Orang</span></p></div></div>
                 </div>
                 <div class="md:col-span-2 bg-white/10 backdrop-blur rounded-3xl border border-white/25 p-5">
                     <p class="text-center text-[11px] uppercase tracking-widest text-emerald-100 mb-3">Pencapaian Utama</p>
-                    <div class="grid grid-cols-3 gap-2"><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="85.16" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">85,2%</span></div><p class="text-xs font-bold mt-2">Karet</p><p class="text-[10px] text-emerald-100">% RKAP s.d. hari ini</p></div><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="81.53" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">81,5%</span></div><p class="text-xs font-bold mt-2">Kelapa</p><p class="text-[10px] text-emerald-100">% RKAP s.d. hari ini</p></div><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="95.0" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">95,0%</span></div><p class="text-xs font-bold mt-2">Karyawan</p><p class="text-[10px] text-emerald-100">vs posisi awal tahun</p></div></div>
+                    <div class="grid grid-cols-3 gap-2"><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="85.11" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">85,1%</span></div><p class="text-xs font-bold mt-2">Karet</p><p class="text-[10px] text-emerald-100">% RKAP s.d. hari ini</p></div><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="81.53" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">81,5%</span></div><p class="text-xs font-bold mt-2">Kelapa</p><p class="text-[10px] text-emerald-100">% RKAP s.d. hari ini</p></div><div class="text-center"><div class="relative w-24 h-24 mx-auto"><svg viewBox="0 0 80 80" class="w-24 h-24 -rotate-90"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="8"/><circle class="ring" data-p="95.0" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6"/></svg><span class="absolute inset-0 flex items-center justify-center text-base font-extrabold">95,0%</span></div><p class="text-xs font-bold mt-2">Karyawan</p><p class="text-[10px] text-emerald-100">vs posisi awal tahun</p></div></div>
                 </div>
             </div>
-            <p class="relative text-[11px] text-emerald-100 mt-5">Produksi s.d. 5 Oktober 2026 &bull; Mutasi SDM s.d. September 2026 &bull; Komposisi karyawan s.d. Agustus 2026</p>
+            <p class="relative text-[11px] text-emerald-100 mt-5">Produksi s.d. 6 Oktober 2026 &bull; Mutasi SDM s.d. September 2026 &bull; Komposisi karyawan, laba rugi, dan neraca s.d. Agustus 2026</p>
         </section>
 
-        <div class="mt-5 overflow-hidden rounded-2xl bg-white ring-1 ring-brand-100 shadow-sm py-3"><div class="marq"><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karet 85,16% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Kelapa 81,53% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Sawit Oktober 21.188 KG</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karyawan 548 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Perempuan 32 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pensiun 30 orang (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Curah hujan Oktober 0 mm</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pekerja aktif 757 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karet 85,16% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Kelapa 81,53% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Sawit Oktober 21.188 KG</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karyawan 548 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Perempuan 32 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pensiun 30 orang (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Curah hujan Oktober 0 mm</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pekerja aktif 757 orang</span></div></div>
+        <div class="mt-5 overflow-hidden rounded-2xl bg-white ring-1 ring-brand-100 shadow-sm py-3"><div class="marq"><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karet 85,11% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Kelapa 81,53% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Sawit Oktober 28.788 KG</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karyawan 548 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Perempuan 32 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pensiun 30 orang (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Curah hujan Oktober 0 mm</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pekerja aktif 948 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Penjualan bersih Rp168.030.828.003 (108,2% RKAP)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Laba operasi Rp99.397.134.291 (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Total aset Rp2.391.254 juta (95% dari RKAP s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karet 85,11% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Kelapa 81,53% dari RKAP</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Sawit Oktober 28.788 KG</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Karyawan 548 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Perempuan 32 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pensiun 30 orang (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Curah hujan Oktober 0 mm</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Pekerja aktif 948 orang</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Penjualan bersih Rp168.030.828.003 (108,2% RKAP)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Laba operasi Rp99.397.134.291 (s.d. Agustus)</span><span class="mx-6 flex items-center gap-2 text-sm font-semibold text-brand-800 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand-500"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg>Total aset Rp2.391.254 juta (95% dari RKAP s.d. Agustus)</span></div></div>
     </div>
 
     <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-grow">
@@ -87,14 +88,14 @@
                 <div class="flex justify-between items-start mb-2">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-1 rounded-md">Karet Kering</span>
-                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">444.698 <span class="text-sm font-medium text-gray-500">KG</span></h2>
-                        <p class="text-xs text-gray-500 mt-0.5">s.d. 5 Oktober 2026 (RKAP s.d. hari ini: 522.170 KG)</p>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">446.263 <span class="text-sm font-medium text-gray-500">KG</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. 6 Oktober 2026 (RKAP s.d. hari ini: 524.363 KG)</p>
                     </div>
                     <div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center text-xl"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2L5 12h4l-3 6h5v4h2v-4h5l-3-6h4z"/></svg></div>
                 </div>
                 <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
-                    <span>Bulan Ini: <b class="text-gray-800">7.308 KG</b></span>
-                    <span class="font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">% RKAP: 85,16%</span>
+                    <span>Bulan Ini: <b class="text-gray-800">8.872 KG</b></span>
+                    <span class="font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">% RKAP: 85,11%</span>
                 </div>
             </div>
 
@@ -102,13 +103,13 @@
                 <div class="flex justify-between items-start mb-2">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-md">Kelapa</span>
-                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">663.447 <span class="text-sm font-medium text-gray-500">Butir</span></h2>
-                        <p class="text-xs text-gray-500 mt-0.5">s.d. 5 Oktober 2026 (RKAP s.d. hari ini: 813.696 Btr)</p>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">666.078 <span class="text-sm font-medium text-gray-500">Butir</span></h2>
+                        <p class="text-xs text-gray-500 mt-0.5">s.d. 6 Oktober 2026 (RKAP s.d. hari ini: 816.970 Btr)</p>
                     </div>
                     <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M17 8C8 10 5.9 16.2 3.8 21.3l1.9.7.9-2.1c.9.3 1.9.5 2.9.5 8 0 13.5-6.5 13.5-16.4-3 .4-5.4 1.1-6 1.5z"/></svg></div>
                 </div>
                 <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
-                    <span>Bulan Ini: <b class="text-gray-800">7.312 Btr</b></span>
+                    <span>Bulan Ini: <b class="text-gray-800">9.943 Btr</b></span>
                     <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">% RKAP: 81,53%</span>
                 </div>
             </div>
@@ -117,13 +118,13 @@
                 <div class="flex justify-between items-start mb-2">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Sawit</span>
-                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">1.530.967 <span class="text-sm font-medium text-gray-500">KG</span></h2>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">1.538.567 <span class="text-sm font-medium text-gray-500">KG</span></h2>
                         <p class="text-xs text-gray-500 mt-0.5">s.d. Oktober 2026 (Ex PT RAS)</p>
                     </div>
                     <div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-xl"><svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2L2 7l10 5 10-5zM4.6 11L2 12.3l10 5 10-5L19.4 11 12 14.7zM4.6 16L2 17.3l10 5 10-5-2.6-1.3L12 19.7z"/></svg></div>
                 </div>
                 <div class="mt-4 pt-3 border-t border-gray-100 text-xs flex justify-between items-center text-gray-600">
-                    <span>Bulan Ini: <b class="text-gray-800">21.188 KG</b></span>
+                    <span>Bulan Ini: <b class="text-gray-800">28.788 KG</b></span>
                     <span class="font-semibold text-green-700 bg-green-50 px-2 py-0.5 rounded border border-green-200">Status Operasional: Aktif</span>
                 </div>
             </div>
@@ -147,21 +148,21 @@
                     <div class="space-y-2 mb-6">
                         <div class="flex justify-between text-xs font-semibold">
                             <span class="text-gray-600">Kehadiran Penyadap Okt (HK)</span>
-                            <span class="text-brand-800 font-bold">1.060 / 8.910 (target sebulan)</span>
+                            <span class="text-brand-800 font-bold">1.309 / 8.910 (target sebulan)</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-                            <div class="bg-brand-600 h-3 rounded-full" style="width: 11.9%"></div>
+                            <div class="bg-brand-600 h-3 rounded-full" style="width: 14.7%"></div>
                         </div>
                     </div>
                     <div class="space-y-2 mb-6">
                         <div class="flex justify-between text-xs font-semibold">
                             <span class="text-gray-600">Total Pekerja Aktif</span>
-                            <span class="text-brand-800 font-bold">757 Orang</span>
+                            <span class="text-brand-800 font-bold">948 Orang</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
                             <div class="bg-emerald-500 h-3 rounded-full" style="width: 100%"></div>
                         </div>
-                        <p class="text-[11px] text-gray-500">Beteleme 381 &bull; Awaya 376</p>
+                        <p class="text-[11px] text-gray-500">Beteleme 471 &bull; Awaya 477</p>
                     </div>
                     <div class="bg-brand-50/50 p-4 rounded-xl border border-brand-100">
                         <div class="flex items-center gap-3">
@@ -175,11 +176,11 @@
                 </div>
                 <div class="mt-6 pt-4 border-t border-gray-100 grid grid-cols-2 gap-2 text-center text-xs">
                     <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100">
-                        <span class="block font-bold text-brand-800 text-sm">444.698 KG</span>
+                        <span class="block font-bold text-brand-800 text-sm">446.263 KG</span>
                         <span class="text-gray-500">Total Karet Kumulatif</span>
                     </div>
                     <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-100">
-                        <span class="block font-bold text-brand-800 text-sm">663.447 Btr</span>
+                        <span class="block font-bold text-brand-800 text-sm">666.078 Btr</span>
                         <span class="text-gray-500">Total Kelapa Kumulatif</span>
                     </div>
                 </div>
@@ -240,9 +241,9 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Beteleme</td><td class="px-4 py-2.5">276.120</td><td class="px-4 py-2.5">413.000</td><td class="px-4 py-2.5 font-bold text-brand-700">66,85%</td></tr>
-                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td><td class="px-4 py-2.5">168.578</td><td class="px-4 py-2.5">159.600</td><td class="px-4 py-2.5 font-bold text-brand-700">105,63%</td></tr>
-                            <tr class="bg-brand-50 font-bold text-brand-900"><td class="px-4 py-2.5">Total Karet Regional 8</td><td class="px-4 py-2.5">444.698</td><td class="px-4 py-2.5">572.600</td><td class="px-4 py-2.5 text-brand-800">77,66%</td></tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Beteleme</td><td class="px-4 py-2.5">277.187</td><td class="px-4 py-2.5">413.000</td><td class="px-4 py-2.5 font-bold text-brand-700">67,12%</td></tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td><td class="px-4 py-2.5">169.075</td><td class="px-4 py-2.5">159.600</td><td class="px-4 py-2.5 font-bold text-brand-700">105,94%</td></tr>
+                            <tr class="bg-brand-50 font-bold text-brand-900"><td class="px-4 py-2.5">Total Karet Regional 8</td><td class="px-4 py-2.5">446.263</td><td class="px-4 py-2.5">572.600</td><td class="px-4 py-2.5 text-brand-800">77,94%</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -251,7 +252,7 @@
             <div class="bg-white rounded-3xl shadow-md border border-emerald-100 overflow-hidden">
                 <div class="p-4 bg-emerald-700 text-white font-bold text-sm flex justify-between items-center">
                     <span>Rincian Kebun Kelapa (Awaya & Mira)</span>
-                    <span class="text-xs bg-emerald-800 px-2.5 py-1 rounded">s.d. 5 Okt 2026</span>
+                    <span class="text-xs bg-emerald-800 px-2.5 py-1 rounded">s.d. 6 Okt 2026</span>
                 </div>
                 <div class="overflow-x-auto custom-scrollbar">
                     <table class="w-full text-xs text-left text-gray-600">
@@ -264,9 +265,9 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td><td class="px-4 py-2.5">413.365</td><td class="px-4 py-2.5">466.000</td><td class="px-4 py-2.5 font-bold text-emerald-700">88,70%</td></tr>
-                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Mira</td><td class="px-4 py-2.5">250.082</td><td class="px-4 py-2.5">423.000</td><td class="px-4 py-2.5 font-bold text-emerald-700">59,12%</td></tr>
-                            <tr class="bg-emerald-50 font-bold text-emerald-900"><td class="px-4 py-2.5">Total Kelapa Regional 8</td><td class="px-4 py-2.5">663.447</td><td class="px-4 py-2.5">889.000</td><td class="px-4 py-2.5 text-emerald-800">74,63%</td></tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Awaya</td><td class="px-4 py-2.5">414.681</td><td class="px-4 py-2.5">466.000</td><td class="px-4 py-2.5 font-bold text-emerald-700">88,99%</td></tr>
+                            <tr><td class="px-4 py-2.5 font-semibold text-gray-800">Kebun Mira</td><td class="px-4 py-2.5">251.397</td><td class="px-4 py-2.5">423.000</td><td class="px-4 py-2.5 font-bold text-emerald-700">59,43%</td></tr>
+                            <tr class="bg-emerald-50 font-bold text-emerald-900"><td class="px-4 py-2.5">Total Kelapa Regional 8</td><td class="px-4 py-2.5">666.078</td><td class="px-4 py-2.5">889.000</td><td class="px-4 py-2.5 text-emerald-800">74,92%</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -297,7 +298,7 @@
         <section class="bg-white rounded-3xl shadow-md border border-brand-100 overflow-hidden">
             <div class="p-5 bg-white border-b border-gray-100 flex justify-between items-center">
                 <div>
-                    <h3 class="font-bold text-gray-800 text-base">Tabel Produksi Harian Oktober 2026 (1 - 5 Oktober)</h3>
+                    <h3 class="font-bold text-gray-800 text-base">Tabel Produksi Harian Oktober 2026 (1 - 6 Oktober)</h3>
                     <p class="text-xs text-gray-500">Nilai riil dari Google Spreadsheet resmi PTPN Regional 8</p>
                 </div>
                 <span class="text-xs text-brand-800 font-semibold bg-brand-50 px-3 py-1 rounded-lg border border-brand-200">Laporan Harian Unit</span>
@@ -352,6 +353,40 @@
         <!-- Tabel -->
         <div id="tables" class="space-y-8"></div>
     </div>
+        <div id="tab-keu" class="panel space-y-8 hidden">
+        <div class="flex flex-wrap gap-2 text-sm font-semibold"><button onclick="document.getElementById('sec-labarugi').scrollIntoView({behavior:'smooth'})" class="px-4 py-2 rounded-full bg-brand-700 text-white shadow hover:bg-brand-800 transition">Laba Rugi</button><button onclick="document.getElementById('sec-neraca').scrollIntoView({behavior:'smooth'})" class="px-4 py-2 rounded-full bg-white text-brand-800 ring-1 ring-brand-200 hover:bg-brand-50 transition">Posisi Keuangan (Neraca)</button></div>
+        <div id="sec-labarugi" class="scroll-mt-28 flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Ringkasan Keuangan Total (s.d. Agustus 2026, dalam rupiah)</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section id="keuKpi" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></section>
+        <div class="flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Grafik Keuangan</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-1">RKAP vs Realisasi 2026 vs Realisasi 2025 (Total, Rupiah)</h3><div class="relative h-72"><canvas id="k1"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-1">Komposisi Penjualan Bersih per Segmen (Realisasi 2026)</h3><div class="relative h-72"><canvas id="k2"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-1">Struktur Beban Total: RKAP vs Realisasi 2026 (Rupiah)</h3><div class="relative h-72"><canvas id="k3"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-1">Laba per Segmen, Realisasi 2026 (Rupiah)</h3><div class="relative h-72"><canvas id="k4"></canvas></div></div>
+        </section>
+        <div class="flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Sorotan Keuangan</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section id="keuInsight" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></section>
+        <div class="flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Pencapaian Total terhadap RKAP dan Tahun Lalu</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section><div class="bg-white rounded-3xl shadow-md ring-1 ring-brand-100/70 overflow-hidden"><div class="overflow-x-auto custom-scrollbar"><table id="keuAnalisis" class="w-full text-xs text-gray-600"></table></div></div></section>
+        <div class="flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Laporan Laba Rugi per Segmen</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section><div class="bg-white rounded-3xl shadow-md ring-1 ring-brand-100/70 overflow-hidden">
+            <div class="p-4 bg-gradient-to-r from-brand-700 to-emerald-500 text-white font-bold text-sm flex justify-between items-center gap-2"><span>PT Perkebunan Nusantara I Regional 8 (dalam rupiah)</span><span class="text-xs bg-brand-800 px-2.5 py-1 rounded whitespace-nowrap">s.d. Agustus 2026</span></div>
+            <div class="overflow-x-auto custom-scrollbar"><table id="keuTabel" class="w-full text-xs text-gray-600" style="min-width:1150px"></table></div>
+            <p class="p-4 text-[11px] text-gray-500 bg-brand-50/60">Catatan: angka dalam kurung adalah nilai negatif. RKAP segmen Lain-lain tidak memuat anggaran beban, jadi perbandingan terhadap RKAP paling tepat dibaca pada kolom Total.</p>
+        </div></section>
+        <div id="sec-neraca" class="scroll-mt-28 flex items-center gap-3"><span class="w-1.5 h-7 rounded-full bg-gradient-to-b from-brand-500 to-brand-800"></span><h2 class="text-lg font-extrabold text-brand-900">Posisi Keuangan (Neraca) s.d. Agustus 2026 &mdash; Rp Juta</h2><span class="flex-1 h-px bg-gradient-to-r from-brand-200 to-transparent"></span></div>
+        <section id="neKpi" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></section>
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-1">Komponen Neraca: RKAP s.d. Agustus vs Realisasi (Rp Juta)</h3><div class="relative h-72"><canvas id="n1"></canvas></div></div>
+            <div class="bg-white rounded-3xl p-6 shadow-md ring-1 ring-brand-100/70"><h3 class="font-bold text-sm mb-1">Struktur Pendanaan (Realisasi s.d. Agustus 2026)</h3><div class="relative h-72"><canvas id="n2"></canvas></div></div>
+        </section>
+        <section id="neInsight" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></section>
+        <section><div class="bg-white rounded-3xl shadow-md ring-1 ring-brand-100/70 overflow-hidden">
+            <div class="p-4 bg-gradient-to-r from-brand-700 to-emerald-500 text-white font-bold text-sm flex justify-between items-center gap-2"><span>Laporan Posisi Keuangan (Rp Juta)</span><span class="text-xs bg-brand-800 px-2.5 py-1 rounded whitespace-nowrap">s.d. Agustus 2026</span></div>
+            <div class="overflow-x-auto custom-scrollbar"><table id="neTabel" class="w-full text-xs text-gray-600" style="min-width:900px"></table></div>
+            <p class="p-4 text-[11px] text-gray-500 bg-brand-50/60">Kolom persen: realisasi s.d. Agustus 2026 terhadap RKAP setahun (4/2), RKAP s.d. Agustus (4/3), dan realisasi s.d. Agustus 2025 (4/5). RKAP mencatat ekuitas pada komponen ekuitas lainnya dan surplus revaluasi, sedangkan realisasi pada modal disetor, jadi perbandingan ekuitas paling tepat dibaca pada Jumlah Ekuitas.</p>
+        </div></section>
+    </div>
     </main>
 
     <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-800 text-white shadow-xl hover:scale-110 transition flex items-center justify-center" aria-label="Ke atas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="w-5 h-5"><path d="M6 15l6-6 6 6"/></svg></button>
@@ -359,7 +394,7 @@
 
     <script>
         function showTab(t) {
-            ['produksi', 'sdm'].forEach(x => {
+            ['produksi', 'sdm', 'keu'].forEach(x => {
                 document.getElementById('tab-' + x).classList.toggle('hidden', x !== t);
                 const b = document.getElementById('b-' + x);
                 b.classList.toggle('on', x === t); b.classList.toggle('text-white', x !== t);
@@ -389,7 +424,7 @@
             ['Juli', 55188, 56500, 68696, 89900, 212250],
             ['Agustus', 51999, 46000, 118465, 86154, 99270],
             ['September', 49235, 55400, 72839, 89900, 106969],
-            ['Oktober (berjalan)', 7308, 59200, 7312, 88400, 21188],
+            ['Oktober (berjalan)', 8872, 59200, 9943, 88400, 28788],
             ['November (RKAP)', null, 65200, null, 88400, null],
             ['Desember (RKAP)', null, 66200, null, 82600, null]
         ];
@@ -413,7 +448,8 @@
             ['2 Oktober 2026', 1451, 2324, 0, 440219, 660316, '85,02%', '81,81%', 517785, 807148],
             ['3 Oktober 2026', 1408, 1688, 0, 441627, 662004, '84,93%', '81,69%', 519978, 810422],
             ['4 Oktober 2026', 1429, 0, 0, 443056, 662004, '85,21%', '81,69%', 519978, 810422],
-            ['5 Oktober 2026', 1643, 1443, 6864, 444698, 663447, '85,16%', '81,53%', 522170, 813696]
+            ['5 Oktober 2026', 1643, 1443, 6864, 444698, 663447, '85,16%', '81,53%', 522170, 813696],
+            ['6 Oktober 2026', 1565, 2631, 7600, 446263, 666078, '85,11%', '81,53%', 524363, 816970]
         ];
         document.getElementById('harianBody').innerHTML = harian.map((r, i) => `
             <tr class="${i === harian.length - 1 ? 'bg-emerald-100/80 font-bold text-brand-900' : 'hover:bg-brand-50/20'} transition">
@@ -470,7 +506,7 @@
         new Chart(document.getElementById('chSawit'), { type: 'bar', data: { labels: BS.slice(0, 10), datasets: [
             { label: 'Realisasi Sawit (KG)', data: bulanan.slice(0, 10).map(r => r[5]), backgroundColor: '#15803d', borderRadius: 6 } ] }, options: opt });
 
-        const hkR = [6616,4979,5772,7011,6712,7294,7264,7075,6931,1060];
+        const hkR = [6616,4979,5772,7011,6712,7294,7264,7075,6931,1309];
         const hkT = [8250,7260,6600,8250,6930,7920,8910,7590,8580,8910];
         new Chart(document.getElementById('chHK'), { type: 'bar', data: { labels: BS, datasets: [
             { label: 'HK Real', data: nul(hkR), backgroundColor: '#16a34a', borderRadius: 6 },
@@ -483,10 +519,10 @@
             options: { ...opt, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, y1: { beginAtZero: true, position: 'right', grid: { display: false } }, x: { grid: { display: false } } } } });
 
         // Rincian per kebun: [real, rkap, hkReal, hkTarget, mm, hariHujan]
-        const dBet = [[29497,36300,3857,4925,187,12],[18675,41100,2181,4334,369,22],[19897,31600,2779,3940,200,15],[33280,48000,3976,4925,228,14],[36057,49000,4112,4137,169,12],[32911,48000,4458,4728,27,2],[35475,41000,4375,5319,91,6],[31422,33500,4235,4728,0,0],[33685,42000,4035,5122,0,0],[5223,42500,609,5319,0,0],[null,44000],[null,45000]];
-        const dAwK = [[15608,14400,2759,3325,36,5],[20138,16300,2798,2926,218,15],[19921,16000,2993,2660,156,10],[18451,17300,3035,3325,152,13],[17193,18500,2600,2793,414,12],[19342,19000,2836,3192,88,6],[19713,15500,2889,3591,99,6],[20577,12500,2840,3192,16,3],[15551,13400,2896,3458,5,1],[2085,16700,451,3591,0,0],[null,21200],[null,21200]];
-        const dMira = [[32330,41400],[36140,41400],[29015,41400],[27540,42900],[21610,42900],[18415,42900],[26885,42900],[26629,42900],[28763,42900],[2755,41400],[null,41400],[null,35600]];
-        const dAwL = [[29148,46000],[25354,46000],[31989,46000],[71814,46000],[27212,47000],[43637,47000],[41811,47000],[93767,47000],[44076,47000],[4557,47000],[null,47000],[null,47000]];
+        const dBet = [[29497,36300,3857,4925,187,12],[18675,41100,2181,4334,369,22],[19897,31600,2779,3940,200,15],[33280,48000,3976,4925,228,14],[36057,49000,4112,4137,169,12],[32911,48000,4458,4728,27,2],[35475,41000,4375,5319,91,6],[31422,33500,4235,4728,0,0],[33685,42000,4035,5122,0,0],[6290,42500,748,5319,0,0],[null,44000],[null,45000]];
+        const dAwK = [[15608,14400,2759,3325,36,5],[20138,16300,2798,2926,218,15],[19921,16000,2993,2660,156,10],[18451,17300,3035,3325,152,13],[17193,18500,2600,2793,414,12],[19342,19000,2836,3192,88,6],[19713,15500,2889,3591,99,6],[20577,12500,2840,3192,16,3],[15551,13400,2896,3458,5,1],[2582,16700,561,3591,0,0],[null,21200],[null,21200]];
+        const dMira = [[32330,41400],[36140,41400],[29015,41400],[27540,42900],[21610,42900],[18415,42900],[26885,42900],[26629,42900],[28763,42900],[4070,41400],[null,41400],[null,35600]];
+        const dAwL = [[29148,46000],[25354,46000],[31989,46000],[71814,46000],[27212,47000],[43637,47000],[41811,47000],[93767,47000],[44076,47000],[5873,47000],[null,47000],[null,47000]];
         function tabelKebun(id, data, hk) {
             const td = v => `<td class="px-3 py-2">${v}</td>`;
             document.getElementById(id).innerHTML = data.map((r, i) => {
@@ -722,6 +758,208 @@
                     <p class="text-3xl font-extrabold text-brand-900">${n} <span class="text-sm font-semibold text-brand-600">${fmt1(p)}%</span></p>
                     <div class="h-2 bg-green-100 rounded-full mt-2 overflow-hidden"><div class="h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-800" style="width:${p}%"></div></div>
                     <p class="text-[11px] text-gray-500 mt-1">${sub}</p></div>`).join('');
+        })();
+    </script>
+<script>
+        (function () {
+            const D = [
+                ['Penjualan Bersih', [12715759000, 14039031740, 281040000], [142584310404, 153991796263, 137614203911], [155300069404, 168030828003, 137895243911]],
+                ['Beban Pokok Penjualan', [-15460379200, -17530719323, -680252493], [-34385511080, -34400521807, -33125886825], [-49845890280, -51931241130, -33806139318]],
+                ['Laba Bruto', [-2744620200, -3491687583, -399212493], [108198799324, 119591274456, 104488317086], [105454179124, 116099586873, 104089104593], 1],
+                ['Pendapatan Selisih Nilai Wajar Aset Biologis', [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+                ['Beban Pemasaran dan Penjualan', [-29789000, 0, -878], [0, 0, -249112], [-29789000, 0, -249990]],
+                ['Beban Umum dan Administrasi', [-40569170792, -2832729123, -2111588857], [0, -33374362795, -30241627960], [-40569170792, -36207091918, -32353216817]],
+                ['Pendapatan Operasi Lainnya', [0, 234902362, 18133694], [0, 32335046820, 5182038814], [0, 32569949182, 5200172508]],
+                ['Beban Operasi Lainnya', [-353225090, -660438301, -73022671], [0, -12404871545, -2752975653], [-353225090, -13065309846, -2825998324]],
+                ['Pajak Final Atas Pendapatan Operasi Lainnya', [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+                ['Bagian Laba/(Rugi) Entitas Asosiasi', [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+                ['Laba Operasi', [-43696805082, -6749952645, -2565691205], [108198799324, 106147086936, 76675503175], [64501994242, 99397134291, 74109811970], 1],
+                ['Pendapatan Keuangan', [61806930, 16810487, 998819], [0, 61664575, 116724230], [61806930, 78475063, 117723049]],
+                ['Beban Keuangan', [-43018576867, -1438811076, -4512476], [0, -49279681132, -1266065157], [-43018576867, -50718492208, -1270577633]],
+                ['Pajak Final Atas Pendapatan Keuangan', [-12361386, 0, 0], [0, 0, 0], [-12361386, 0, 0]],
+                ['Laba Sebelum Beban Pajak Penghasilan', [-86665936405, -8171953234, -2569204862], [108198799324, 56929070379, 75526162247], [21532862919, 48757117145, 72956957386], 1]
+            ];
+            const row = l => D.find(r => r[0] === l);
+            const T = l => row(l)[3], K = l => row(l)[1], LL = l => row(l)[2];
+            const M = n => (n / 1e9).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const P1 = n => n.toLocaleString('id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+            const rp = n => n === 0 ? '-' : (n < 0 ? '(' + Math.abs(n).toLocaleString('id-ID') + ')' : n.toLocaleString('id-ID'));
+            const sv = (d, c = 'w-6 h-6') => `<svg viewBox="0 0 24 24" fill="currentColor" class="${c}">${d}</svg>`;
+            const ICON = {
+                bar: '<path d="M4 20V10h4v10zm6 0V4h4v16zm6 0v-7h4v7z"/>',
+                pie: '<path d="M11 2v10h10A10 10 0 0011 2zM9 4a9 9 0 109 9H9z"/>',
+                up: '<path d="M3 17l6-6 4 4 7-7h-3V6h7v7h-2v-3l-8 8-4-4-5 5z"/>',
+                coin: '<circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9.5h4.5a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3H15" fill="none" stroke="#166534" stroke-width="1.8" stroke-linecap="round"/>'
+            };
+
+            // KPI
+            const kp = [['Penjualan Bersih', 'Penjualan Bersih', 'bar', 'from-green-500 to-emerald-700'], ['Laba Bruto', 'Laba Bruto', 'pie', 'from-emerald-400 to-green-700'],
+                ['Laba Operasi', 'Laba Operasi', 'up', 'from-lime-400 to-green-600'], ['Laba Sebelum Pajak', 'Laba Sebelum Beban Pajak Penghasilan', 'coin', 'from-green-600 to-green-900']];
+            document.getElementById('keuKpi').innerHTML = kp.map(([t, l, ic, g]) => {
+                const [rk, r26, r25] = T(l), pr = r26 / rk * 100, yoy = (r26 / r25 - 1) * 100;
+                return `<div class="relative overflow-hidden bg-white rounded-3xl p-5 shadow-md ring-1 ring-black/5 hover:-translate-y-1 hover:shadow-xl transition">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-20 bg-gradient-to-br ${g}"></div>
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br ${g} text-white flex items-center justify-center shadow">${sv(ICON[ic])}</div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-gray-500 mt-3">${t}</p>
+                    <p class="text-xl font-extrabold text-brand-900">Rp ${rp(r26)}</p>
+                    <div class="h-2 bg-green-100 rounded-full mt-2 overflow-hidden"><div class="h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-800" style="width:${Math.min(pr, 100)}%"></div></div>
+                    <p class="text-[11px] text-gray-500 mt-1.5"><b class="text-brand-700">${P1(pr)}%</b> dari RKAP (Rp ${rp(rk)})</p>
+                    <p class="text-[11px] text-gray-500"><b class="text-brand-700">${yoy >= 0 ? '+' : ''}${P1(yoy)}%</b> vs 2025 (Rp ${rp(r25)})</p></div>`;
+            }).join('');
+
+            // Grafik
+            const mil = a => a.slice();
+            const fr = v => v < 0 ? '(Rp ' + Math.abs(v).toLocaleString('id-ID') + ')' : 'Rp ' + v.toLocaleString('id-ID');
+            const tk = { callback: v => v.toLocaleString('id-ID'), font: { size: 10 }, maxTicksLimit: 6 };
+            const fm = { callbacks: { label: c => ` ${c.dataset.label}: ${fr(c.parsed.y ?? c.parsed.x ?? c.parsed)}` } };
+            const axes = (o = {}) => ({ responsive: true, maintainAspectRatio: false, ...o, plugins: { legend: { position: 'top', labels: { usePointStyle: true } }, tooltip: fm }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' }, ticks: tk }, x: { grid: { display: false } } } });
+            const pick = (labels, i) => labels.map(l => T(l)[i]);
+            const L4 = ['Penjualan Bersih', 'Laba Bruto', 'Laba Operasi', 'Laba Sebelum Beban Pajak Penghasilan'];
+            new Chart(document.getElementById('k1'), { type: 'bar', data: { labels: ['Penjualan Bersih', 'Laba Bruto', 'Laba Operasi', 'Laba Sebelum Pajak'], datasets: [
+                { label: 'RKAP 2026', data: mil(pick(L4, 0)), backgroundColor: '#dcfce7', borderColor: '#22c55e', borderWidth: 1, borderRadius: 6 },
+                { label: 'Realisasi 2025', data: mil(pick(L4, 2)), backgroundColor: '#4ade80', borderRadius: 6 },
+                { label: 'Realisasi 2026', data: mil(pick(L4, 1)), backgroundColor: '#166534', borderRadius: 6 }] }, options: axes() });
+            new Chart(document.getElementById('k2'), { type: 'doughnut', data: { labels: ['Karet', 'Lain-lain'], datasets: [{ data: mil([K('Penjualan Bersih')[1], LL('Penjualan Bersih')[1]]), backgroundColor: ['#166534', '#4ade80'] }] },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '62%', plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: c => ` ${c.label}: ${fr(c.parsed)}` } } } } });
+            const BL = ['Beban Pokok Penjualan', 'Beban Umum dan Administrasi', 'Beban Operasi Lainnya', 'Beban Keuangan'];
+            new Chart(document.getElementById('k3'), { type: 'bar', data: { labels: ['Beban Pokok Penjualan', 'Beban Umum & Adm.', 'Beban Operasi Lainnya', 'Beban Keuangan'], datasets: [
+                { label: 'RKAP 2026', data: mil(pick(BL, 0).map(Math.abs)), backgroundColor: '#bbf7d0', borderRadius: 6 },
+                { label: 'Realisasi 2026', data: mil(pick(BL, 1).map(Math.abs)), backgroundColor: '#166534', borderRadius: 6 }] },
+                options: { ...axes({ indexAxis: 'y' }), scales: { x: { beginAtZero: true, grid: { color: '#f3f4f6' }, ticks: tk }, y: { grid: { display: false } } } } });
+            const S3 = ['Laba Bruto', 'Laba Operasi', 'Laba Sebelum Beban Pajak Penghasilan'];
+            new Chart(document.getElementById('k4'), { type: 'bar', data: { labels: ['Laba Bruto', 'Laba Operasi', 'Laba Sebelum Pajak'], datasets: [
+                { label: 'Karet', data: mil(S3.map(l => K(l)[1])), backgroundColor: '#86efac', borderRadius: 6 },
+                { label: 'Lain-lain', data: mil(S3.map(l => LL(l)[1])), backgroundColor: '#166534', borderRadius: 6 }] }, options: axes() });
+
+            // Sorotan
+            const pBruto = [0, 1, 2].map(i => T('Laba Bruto')[i] / T('Penjualan Bersih')[i] * 100);
+            const pOp = [0, 1, 2].map(i => T('Laba Operasi')[i] / T('Penjualan Bersih')[i] * 100);
+            const bua = T('Beban Umum dan Administrasi'), rugiK = K('Laba Operasi');
+            const ins = [
+                ['Margin Laba Bruto', P1(pBruto[1]) + '%', pBruto[1], `RKAP ${P1(pBruto[0])}% &bull; 2025 ${P1(pBruto[2])}%`, ICON.pie],
+                ['Margin Laba Operasi', P1(pOp[1]) + '%', pOp[1], `RKAP ${P1(pOp[0])}% &bull; 2025 ${P1(pOp[2])}%`, ICON.up],
+                ['Beban Umum & Adm. vs RKAP', P1(bua[1] / bua[0] * 100) + '%', bua[1] / bua[0] * 100, `Rp ${rp(-bua[1])} dari anggaran Rp ${rp(-bua[0])}`, ICON.bar],
+                ['Rugi Operasi Segmen Karet', 'Rp ' + rp(-rugiK[1]), -rugiK[1] / -rugiK[0] * 100, `${P1(rugiK[1] / rugiK[0] * 100)}% dari rugi RKAP Rp ${rp(-rugiK[0])}`, ICON.coin]];
+            document.getElementById('keuInsight').innerHTML = ins.map(([t, v, p, sub, ic]) => `
+                <div class="relative overflow-hidden rounded-3xl p-5 bg-white shadow-md ring-1 ring-brand-100">
+                    <div class="absolute -right-5 -top-5 w-20 h-20 rounded-full bg-brand-100 opacity-70"></div>
+                    <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-800 text-white flex items-center justify-center shadow">${sv(ic, 'w-5 h-5')}</div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-gray-500 mt-3">${t}</p>
+                    <p class="text-2xl font-extrabold text-brand-900">${v}</p>
+                    <div class="h-2 bg-green-100 rounded-full mt-2 overflow-hidden"><div class="h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-800" style="width:${Math.min(Math.max(p, 0), 100)}%"></div></div>
+                    <p class="text-[11px] text-gray-500 mt-1">${sub}</p></div>`).join('');
+
+            // Tabel analisis total
+            const AL = ['Penjualan Bersih', 'Beban Pokok Penjualan', 'Laba Bruto', 'Beban Umum dan Administrasi', 'Laba Operasi', 'Laba Sebelum Beban Pajak Penghasilan'];
+            const th = x => `<th class="px-4 py-2.5 font-bold text-right">${x}</th>`;
+            document.getElementById('keuAnalisis').innerHTML = `<thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr><th class="px-4 py-2.5 font-bold text-left">Uraian (Total, dalam rupiah)</th>${th('RKAP s.d. Agu 2026')}${th('Realisasi s.d. Agu 2026')}${th('% dari RKAP')}${th('Realisasi s.d. Agu 2025')}${th('Perubahan vs 2025')}</tr></thead><tbody class="divide-y divide-gray-100">` +
+                AL.map(l => { const [rk, a, b] = T(l), bold = row(l)[4]; const y = (a / b - 1) * 100;
+                    return `<tr class="${bold ? 'bg-brand-50 font-bold text-brand-900' : ''}"><td class="px-4 py-2.5 font-medium">${l}</td><td class="px-4 py-2.5 text-right">${rp(rk)}</td><td class="px-4 py-2.5 text-right">${rp(a)}</td><td class="px-4 py-2.5 text-right font-semibold text-brand-700">${P1(a / rk * 100)}%</td><td class="px-4 py-2.5 text-right">${rp(b)}</td><td class="px-4 py-2.5 text-right font-semibold text-brand-700">${y >= 0 ? '+' : ''}${P1(y)}%</td></tr>`; }).join('') + '</tbody>';
+
+            // Tabel laba rugi per segmen
+            const g = (t) => `<th colspan="3" class="px-3 py-2 text-center font-bold bg-brand-700 text-white border-l border-white/30">${t}</th>`;
+            const sub = ['RKAP s.d. Agu 2026', 'Real. s.d. Agu 2026', 'Real. s.d. Agu 2025'];
+            const sh = sub.map(x => `<th class="px-3 py-2 text-right font-bold">${x}</th>`).join('');
+            document.getElementById('keuTabel').innerHTML = `<thead class="uppercase"><tr><th rowspan="2" class="px-3 py-2 text-left font-bold bg-brand-700 text-white">Uraian</th>${g('Karet')}${g('Lain-lain')}${g('Total')}</tr><tr class="bg-brand-50 text-brand-900 border-b border-brand-200">${sh}${sh}${sh}</tr></thead><tbody class="divide-y divide-gray-100">` +
+                D.map(r => `<tr class="${r[4] ? 'bg-brand-50 font-bold text-brand-900' : 'hover:bg-brand-50/30'}"><td class="px-3 py-2 font-medium ${r[4] ? '' : 'text-gray-800'}">${r[0]}</td>` +
+                    [1, 2, 3].map(k => r[k].map(v => `<td class="px-3 py-2 text-right whitespace-nowrap">${rp(v)}</td>`).join('')).join('') + '</tr>').join('') + '</tbody>';
+        })();
+    </script>
+<script>
+        (function () {
+            const N = [
+                ['Aset Lancar', 238153, 203563, 278328, 237838, '117', '137', '117'],
+                ['Aset Tidak Lancar', 2295143, 2304205, 2112926, 2086660, '92', '92', '101'],
+                ['Jumlah Aset', 2533296, 2507769, 2391254, 2324498, '94', '95', '103'],
+                ['LIABILITAS & EKUITAS'],
+                ['Kewajiban Jangka Pendek', 1012043, 1028143, 576881, 842852, '57', '56', '68'],
+                ['Kewajiban Jangka Panjang', 318297, 302943, 521196, 289870, '164', '172', '180'],
+                ['Jumlah Liabilitas', 1330341, 1331086, 1098077, 1132722, '83', '82', '97'],
+                ['EKUITAS'],
+                ['Modal Disetor', 0, 0, 1510430, 1522615, '-', '-', '99'],
+                ['Komponen Ekuitas Lainnya', 377832, 377832, 0, 0, '', '', ''],
+                ['Cadangan Umum', 0, 0, 0, 0, '-', '-', '-'],
+                ['Saldo Laba/(Rugi)', -567039, -593311, -311418, -380321, '55', '52', '82'],
+                ['Laba (Rugi) Tahun Berjalan', 0, 0, 0, 0, '-', '-', '-'],
+                ['Surplus Reval Aset Tanah', 1392162, 1392162, 94164, 49482, '7', '7', '-'],
+                ['Jumlah Ekuitas', 1202955, 1176683, 1293176, 1191776, '-', '-', '-'],
+                ['Jumlah Liabilitas & Ekuitas', 2533296, 2507769, 2391254, 2324498, '94', '95', '103']
+            ];
+            const g = l => N.find(r => r[0] === l);
+            const R26 = l => g(l)[3], R25 = l => g(l)[4], RA = l => g(l)[2];
+            const f2 = n => n.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const P1 = n => n.toLocaleString('id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+            const TR = n => f2(n / 1e6);
+            const rp = n => n === 0 ? '-' : (n < 0 ? '(' + Math.abs(n).toLocaleString('id-ID') + ')' : n.toLocaleString('id-ID'));
+            const sv = (d, c = 'w-6 h-6') => `<svg viewBox="0 0 24 24" fill="currentColor" class="${c}">${d}</svg>`;
+            const IC = {
+                aset: '<path d="M3 21V9l9-6 9 6v12h-6v-6H9v6z"/>',
+                liab: '<path d="M4 4h16v4H4zm0 6h16v10H4zm4 3v4h2v-4zm6 0v4h2v-4z"/>',
+                eku: '<path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>',
+                rugi: '<path d="M3 7l6 6 4-4 8 8v-5h2v9h-9v-2h5l-6-6-4 4-8-8z"/>',
+                bar: '<path d="M4 20V10h4v10zm6 0V4h4v16zm6 0v-7h4v7z"/>',
+                pie: '<path d="M11 2v10h10A10 10 0 0011 2zM9 4a9 9 0 109 9H9z"/>'
+            };
+
+            // KPI
+            const kp = [['Jumlah Aset', 'Jumlah Aset', 'aset', 'from-green-500 to-emerald-700'], ['Jumlah Liabilitas', 'Jumlah Liabilitas', 'liab', 'from-emerald-400 to-green-700'],
+                ['Jumlah Ekuitas', 'Jumlah Ekuitas', 'eku', 'from-lime-400 to-green-600'], ['Rugi Akumulasi (Saldo Laba/Rugi)', 'Saldo Laba/(Rugi)', 'rugi', 'from-green-600 to-green-900']];
+            document.getElementById('neKpi').innerHTML = kp.map(([t, l, ic, gr]) => {
+                const a = R26(l), pr = a / RA(l) * 100, yoy = (a / R25(l) - 1) * 100, rugi = l.startsWith('Saldo');
+                return `<div class="relative overflow-hidden bg-white rounded-3xl p-5 shadow-md ring-1 ring-black/5 hover:-translate-y-1 hover:shadow-xl transition">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-20 bg-gradient-to-br ${gr}"></div>
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br ${gr} text-white flex items-center justify-center shadow">${sv(IC[ic])}</div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-gray-500 mt-3">${t}</p>
+                    <p class="text-2xl font-extrabold text-brand-900">Rp ${rp(Math.abs(a))} <span class="text-sm font-semibold text-brand-600">juta</span></p>
+                    <div class="h-2 bg-green-100 rounded-full mt-2 overflow-hidden"><div class="h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-800" style="width:${Math.min(pr, 100)}%"></div></div>
+                    <p class="text-[11px] text-gray-500 mt-1.5"><b class="text-brand-700">${P1(pr)}%</b> dari RKAP s.d. Agustus (Rp ${rp(Math.abs(RA(l)))} juta)</p>
+                    <p class="text-[11px] text-gray-500"><b class="text-brand-700">${yoy >= 0 ? '+' : ''}${P1(yoy)}%</b> vs 2025${rugi ? ' (rugi mengecil)' : ''}</p></div>`;
+            }).join('');
+
+            // Grafik
+            const mil = a => a.slice();
+            const tip = { callbacks: { label: c => ` ${c.dataset.label ? c.dataset.label + ': ' : c.label + ': '}Rp ${(c.parsed.y ?? c.parsed).toLocaleString('id-ID', { maximumFractionDigits: 0 })} juta` } };
+            const KS = ['Aset Lancar', 'Aset Tidak Lancar', 'Kewajiban Jangka Pendek', 'Kewajiban Jangka Panjang', 'Jumlah Ekuitas'];
+            new Chart(document.getElementById('n1'), { type: 'bar', data: { labels: ['Aset Lancar', 'Aset Tidak Lancar', 'Kewajiban Jk. Pendek', 'Kewajiban Jk. Panjang', 'Ekuitas'], datasets: [
+                { label: 'RKAP s.d. Agu 2026', data: mil(KS.map(RA)), backgroundColor: '#dcfce7', borderColor: '#22c55e', borderWidth: 1, borderRadius: 6 },
+                { label: 'Realisasi 2025', data: mil(KS.map(R25)), backgroundColor: '#4ade80', borderRadius: 6 },
+                { label: 'Realisasi 2026', data: mil(KS.map(R26)), backgroundColor: '#166534', borderRadius: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { usePointStyle: true } }, tooltip: tip }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } } });
+            new Chart(document.getElementById('n2'), { type: 'doughnut', data: { labels: ['Kewajiban Jk. Pendek', 'Kewajiban Jk. Panjang', 'Ekuitas'], datasets: [{ data: mil([R26('Kewajiban Jangka Pendek'), R26('Kewajiban Jangka Panjang'), R26('Jumlah Ekuitas')]), backgroundColor: ['#86efac', '#22c55e', '#166534'] }] },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '62%', plugins: { legend: { position: 'bottom' }, tooltip: tip } } });
+
+            // Sorotan (rasio)
+            const cr = [RA, R25, R26].map(f => f('Aset Lancar') / f('Kewajiban Jangka Pendek'));
+            const der = [RA, R25, R26].map(f => f('Jumlah Liabilitas') / f('Jumlah Ekuitas'));
+            const x2 = n => f2(n) + 'x';
+            const kjp = (R26('Kewajiban Jangka Panjang') / R25('Kewajiban Jangka Panjang') - 1) * 100;
+            const kjd = (R26('Kewajiban Jangka Pendek') / R25('Kewajiban Jangka Pendek') - 1) * 100;
+            const atl = [R26, R25].map(f => f('Aset Tidak Lancar') / f('Jumlah Aset') * 100);
+            const ins = [
+                ['Rasio Lancar', x2(cr[2]), cr[2] * 100, `RKAP ${x2(cr[0])} &bull; 2025 ${x2(cr[1])} (aset lancar / kewajiban jk. pendek)`, IC.bar],
+                ['Liabilitas / Ekuitas', x2(der[2]), der[2] * 100, `RKAP ${x2(der[0])} &bull; 2025 ${x2(der[1])}`, IC.pie],
+                ['Aset Tidak Lancar', P1(atl[0]) + '%', atl[0], `dari total aset &bull; 2025 ${P1(atl[1])}%`, IC.aset],
+                ['Kewajiban Jk. Panjang', '+' + P1(kjp) + '%', Math.min(kjp, 100), `vs 2025 &bull; jk. pendek ${P1(kjd)}% (Rp ${rp(R26('Kewajiban Jangka Pendek'))} juta)`, IC.liab]];
+            document.getElementById('neInsight').innerHTML = ins.map(([t, v, p, sub, ic]) => `
+                <div class="relative overflow-hidden rounded-3xl p-5 bg-white shadow-md ring-1 ring-brand-100">
+                    <div class="absolute -right-5 -top-5 w-20 h-20 rounded-full bg-brand-100 opacity-70"></div>
+                    <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-800 text-white flex items-center justify-center shadow">${sv(ic, 'w-5 h-5')}</div>
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-gray-500 mt-3">${t}</p>
+                    <p class="text-2xl font-extrabold text-brand-900">${v}</p>
+                    <div class="h-2 bg-green-100 rounded-full mt-2 overflow-hidden"><div class="h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-800" style="width:${Math.min(Math.max(p, 0), 100)}%"></div></div>
+                    <p class="text-[11px] text-gray-500 mt-1">${sub}</p></div>`).join('');
+
+            // Tabel
+            const th = x => `<th class="px-3 py-2.5 font-bold text-right">${x}</th>`;
+            const pc = v => (v === '' || v === '-') ? '-' : v + '%';
+            document.getElementById('neTabel').innerHTML = `<thead class="uppercase bg-brand-50 text-brand-900 border-b border-brand-200"><tr><th class="px-3 py-2.5 font-bold text-left">Uraian</th>${th('RKAP Setahun 2026')}${th('RKAP s.d. Agu 2026')}${th('Realisasi s.d. Agu 2026')}${th('Realisasi s.d. Agu 2025')}${th('% (4/2)')}${th('% (4/3)')}${th('% (4/5)')}</tr></thead><tbody class="divide-y divide-gray-100">` +
+                N.map(r => {
+                    if (r.length === 1) return `<tr class="bg-brand-50/70"><td colspan="8" class="px-3 py-2 font-extrabold text-brand-800">${r[0]}</td></tr>`;
+                    const tot = /^Jumlah/.test(r[0]);
+                    return `<tr class="${tot ? 'bg-brand-50 font-bold text-brand-900' : 'hover:bg-brand-50/30'}"><td class="px-3 py-2 font-medium ${tot ? '' : 'text-gray-800'}">${r[0]}</td>` +
+                        [1, 2, 3, 4].map(i => `<td class="px-3 py-2 text-right whitespace-nowrap">${rp(r[i])}</td>`).join('') +
+                        [5, 6, 7].map(i => `<td class="px-3 py-2 text-right text-brand-700 font-semibold">${pc(r[i])}</td>`).join('') + '</tr>';
+                }).join('') + '</tbody>';
         })();
     </script>
 </body>
